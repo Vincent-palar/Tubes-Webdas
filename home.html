@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesona Budaya Cirebon - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        html 
+        {
+            scroll-behavior: smooth;
+        }
+
+        :root 
+        {
+            --bg-gelap: #1a1105; 
+            --bg-kartu: #2c1e0f;
+            --emas-utama: #c5a059;
+            --emas-terang: #e5c17d;
+            --warna-teks: #e2d7ca;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body 
+        {
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: var(--warna-teks);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            padding-top: 0;
+        }
+
+        h1, h2, h3 
+        {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .garis-pembatas 
+        {
+            width: calc(100% - 60px); 
+            max-width: 1100px; 
+            height: 2px; 
+            background-color: var(--emas-utama);
+            margin: 25px auto;
+        }
+
+        .navbar-utama 
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 17, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 15px 0;
+        }
+
+        .wadah-nav 
+        {
+            width: 100%;
+            padding: 0 5%; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: relative;
+        }
+
+        .link-logo 
+        {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .ikon-logo 
+        {
+            color: var(--emas-utama);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .teks-logo 
+        {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .list-navigasi 
+        {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-navigasi li 
+        {
+            margin: 0 12px; 
+        }
+
+        .list-navigasi .link-menu 
+        {
+            color: var(--warna-teks);
+            text-decoration: none; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .list-navigasi .link-menu:hover, 
+        .list-navigasi .link-menu.aktif 
+        {
+            color: var(--emas-utama);
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+        }
+
+        .tombol-toggle 
+        {
+            display: none;
+            background: none;
+            border: 1px solid var(--emas-utama);
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tombol-toggle span 
+        {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--emas-utama);
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .banner-hero 
+        {
+            height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px 0 20px; 
+            position: relative;
+            background: linear-gradient(to bottom, 
+                            rgba(26, 17, 5, 0.85) 0%, 
+                            rgba(26, 17, 5, 0.2) 40%, 
+                            rgba(26, 17, 5, 0.5) 65%, 
+                            rgba(26, 17, 5, 0.9) 85%, 
+                            #1a1105 100%
+                        ), 
+                        url('header1.png') no-repeat center center/cover;
+        }
+
+        .konten-hero 
+        {
+            width: 100%;
+            max-width: 1100px; 
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .sub-judul 
+        {
+            font-size: 1.4rem; 
+            letter-spacing: 4px; 
+            color: var(--emas-utama);
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .judul-utama 
+        {
+            font-size: 5.5rem; 
+            line-height: 1.25; 
+            letter-spacing: 4px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .deskripsi-hero 
+        {
+            max-width: 850px; 
+            margin: 0 auto 45px auto; 
+            color: rgba(255, 255, 255, 0.7); 
+            line-height: 2.0; 
+            font-size: 1.15rem; 
+            letter-spacing: 0.5px;
+        }
+
+        .tombol-emas 
+        {
+            background-color: transparent;
+            border: 2px solid var(--emas-utama);
+            color: var(--emas-utama);
+            padding: 14px 40px; 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .tombol-emas:hover 
+        {
+            background-color: var(--emas-utama);
+            color: var(--bg-gelap);
+            box-shadow: 0px 0px 20px var(--emas-utama);
+        }
+
+        @media (max-width: 767px) 
+        {
+            .tombol-toggle 
+            {
+                display: block !important;
+            }
+
+            .wrapper-menu 
+            {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+
+            .wrapper-menu.aktif 
+            {
+                display: block;
+            }
+
+            .list-navigasi 
+            {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .list-navigasi li 
+            {
+                margin: 0; 
+            }
+
+            .list-navigasi .link-menu 
+            {
+                font-size: 0.9rem;
+                padding: 10px 20px !important; 
+                width: 100%;
+                text-align: left; 
+            }
+            
+            .list-navigasi .link-menu:hover 
+            {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+
+            .judul-utama 
+            { 
+                font-size: 2.2rem; 
+                letter-spacing: 1px; 
+                line-height: 1.3; 
+            }
+            
+            .sub-judul 
+            { 
+                font-size: 0.95rem; 
+                letter-spacing: 2px; 
+            }
+            
+            .deskripsi-hero 
+            { 
+                font-size: 0.9rem; 
+                margin-bottom: 25px; 
+                line-height: 1.7; 
+            }
+            
+            .tombol-emas 
+            { 
+                padding: 10px 25px; 
+                font-size: 0.85rem; 
+            }
+            
+            .section-spotlight 
+            { 
+                padding: 50px 0; 
+            }
+            
+            .container-footer 
+            {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: left;
+            }
+        }
+
+        .section-spotlight 
+        {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a1105 0%, rgba(26, 17, 5, 0.6) 30%, rgba(26, 17, 5, 0.3) 100%);
+        }
+
+        .subjudul-section 
+        {
+            color: rgba(255,255,255,0.5);
+            line-height: 1.8; 
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .kontainer-grid 
+        {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 25px; 
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+        }
+
+        .kartu-budaya 
+        {
+            background-color: rgba(44, 30, 15, 0.85); 
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            border-radius: 12px; 
+            padding: 40px 30px;
+            width: calc(33.333% - 25px); 
+            min-width: 300px; 
+            max-width: 360px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+        }
+
+        .kartu-budaya:hover 
+        {
+            transform: translateY(-10px);
+            border-color: var(--emas-utama);
+            box-shadow: 0px 10px 25px rgba(197, 160, 89, 0.2);
+            background-color: rgba(44, 30, 15, 0.95);
+        }
+
+        .kotak-ikon 
+        {
+            font-size: 2.5rem;
+            color: var(--emas-utama);
+            margin-bottom: 1.2rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .kartu-budaya h3 
+        {
+            margin-bottom: 10px;
+        }
+
+        .teks-kartu 
+        {
+            color: rgba(255, 255, 255, 0.6); 
+            font-size: 0.95rem; 
+            line-height: 1.8; 
+            max-width: 260px; 
+        }
+
+        footer 
+        {
+            background-color: rgba(18, 12, 4, 0.85);
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 70px 0 30px 0;
+            color: rgba(245,245,245,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .container-footer 
+        {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .kolom-footer h4 
+        {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--emas-utama); 
+            padding-left: 12px; 
+            line-height: 1.2; 
+        }
+
+        .kolom-footer ul 
+        {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .kolom-footer ul li 
+        {
+            margin-bottom: 12px;
+        }
+
+        .kolom-footer ul li a 
+        {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .kolom-footer ul li a:hover 
+        {
+            color: var(--emas-utama);
+            transform: translateX(5px);
+        }
+
+        .teks-tentang 
+        {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 15px;
+        }
+
+        .sosmed-footer 
+        {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sosmed-footer a 
+        {
+            color: var(--emas-utama);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .sosmed-footer a:hover 
+        {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .bawah-footer 
+        {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-utama">
+        <div class="wadah-nav">
+            <a class="link-logo" href="index.html">
+                <i class="fa-solid fa-gopuram ikon-logo"></i>
+                <span class="teks-logo">CIREBON</span>
+            </a>
+            
+            <button class="tombol-toggle" id="btnToggleNav" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="wrapper-menu" id="boxNavMenu">
+                <ul class="list-navigasi">
+                    <li><a class="link-menu aktif" href="index.html">Home</a></li>
+                    <li><a class="link-menu" href="history.html">History</a></li>
+                    <li><a class="link-menu" href="palace.html">Palace</a></li>
+                    <li><a class="link-menu" href="arts.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="music.html">Traditional Music</a></li>
+                    <li><a class="link-menu" href="culinary.html">Culinary</a></li>
+                    <li><a class="link-menu" href="about.html">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="banner-hero">
+        <div class="konten-hero">
+            <p class="sub-judul">The Hidden Jewel of West Java</p>
+            <h1 class="judul-utama">CULTURAL CHARM<br><span style="color: var(--emas-utama);">CIREBON</span></h1>
+            <div class="garis-pembatas"></div>
+            <p class="deskripsi-hero">Exploring the spiritual footprints, majestic palaces, harmonious arts, and timeless culinary delights of the Shrimp City.</p>
+            <a href="#explore" class="tombol-emas">Explore Now</a>
+        </div>
+    </header>
+
+    <section class="section-spotlight" id="explore">
+        <h2 class="text-uppercase">Explore the Heritage</h2>
+        <p class="subjudul-section">Discover the key pillars of Cirebon's fascinating culture</p>
+        <div class="garis-pembatas"></div>
+        
+        <div class="kontainer-grid">
+            <a href="history.html" class="kartu-budaya">
+                <div class="kotak-ikon"><i class="fa-solid fa-scroll"></i></div>
+                <h3>History</h3>
+                <p class="teks-kartu">Uncovering the founding tales of Caruban Nagari and the strategic role of Sunan Gunung Jati.</p>
+            </a>
+            <a href="palace.html" class="kartu-budaya">
+                <div class="kotak-ikon"><i class="fa-solid fa-fort-awesome"></i></div>
+                <h3>Palace</h3>
+                <p class="teks-kartu">The grandeur of Kasepuhan, Kanoman, Kacirebonan, and the uniqueness of red brick architecture.</p>
+            </a>
+            <a href="arts.html" class="kartu-budaya">
+                <div class="kotak-ikon"><i class="fa-solid fa-masks-theater"></i></div>
+                <h3>Performing Arts</h3>
+                <p class="teks-kartu">The profound life philosophies embedded within the mystical movements of the Cirebon Mask Dance.</p>
+            </a>
+            <a href="music.html" class="kartu-budaya">
+                <div class="kotak-ikon"><i class="fa-solid fa-music"></i></div>
+                <h3>Traditional Music</h3>
+                <p class="teks-kartu">From the sacred resonance of Gamelan Renteng to the distinct coastal melodies of Tarling.</p>
+            </a>
+            <a href="culinary.html" class="kartu-budaya">
+                <div class="kotak-ikon"><i class="fa-solid fa-utensils"></i></div>
+                <h3>Culinary</h3>
+                <p class="teks-kartu">Savoring the authentic taste of sega jamblang, savory empal gentong, and refreshing tjampolay syrup.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container-footer">
+            <div class="kolom-footer">
+                <h4>History & Palace</h4>
+                <ul>
+                    <li><a href="history.html">Caruban Nagari</a></li>
+                    <li><a href="history.html">Sunan Gunung Jati</a></li>
+                    <li><a href="palace.html">Kasepuhan Palace</a></li>
+                    <li><a href="palace.html">Kanoman Palace</a></li>
+                    <li><a href="palace.html">Kacirebonan Palace</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Arts & Music</h4>
+                <ul>
+                    <li><a href="arts.html">Mask Dance</a></li>
+                    <li><a href="arts.html">Philosophical Move</a></li>
+                    <li><a href="music.html">Gamelan Renteng</a></li>
+                    <li><a href="music.html">Tarling Coastal</a></li>
+                    <li><a href="music.html">Seni Gending</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Culinary</h4>
+                <ul>
+                    <li><a href="culinary.html">Sega Jamblang</a></li>
+                    <li><a href="culinary.html">Empal Gentong</a></li>
+                    <li><a href="culinary.html">Tjampolay Syrup</a></li>
+                    <li><a href="culinary.html">Docang Cirebon</a></li>
+                    <li><a href="culinary.html">Tahu Gejrot</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>About Me</h4>
+                <p class="teks-tentang">
+                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
+                </p>
+                <div class="sosmed-footer">
+                    <a href="https://github.com" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bawah-footer">
+            <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
+        </div>
+    </footer>
+
+    <script>
+        const btnToggleNav = document.getElementById('btnToggleNav');
+        const boxNavMenu = document.getElementById('boxNavMenu');
+
+        btnToggleNav.addEventListener('click', () => {
+            boxNavMenu.classList.toggle('aktif');
+        });
+
+        const listLinkMenu = document.querySelectorAll('.link-menu');
+        listLinkMenu.forEach(item => {
+            item.addEventListener('click', () => {
+                boxNavMenu.classList.remove('aktif');
+            });
+        });
+    </script>
+</body>
+</html>
