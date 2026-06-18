@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuliner Legendaris - Pesona Budaya Cirebon</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #e2d7ca;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .teks-emas {
+            color: #c5a059;
+        }
+
+        .navbar-utama {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 17, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 15px 0;
+        }
+
+        .wadah-nav {
+            width: 100%;
+            padding: 0 5%; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: relative;
+        }
+
+        .link-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .ikon-logo {
+            color: #c5a059;
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+
+        .teks-logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .toggle-nav-input {
+            display: none;
+        }
+
+        .list-navigasi {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-navigasi li {
+            margin: 0 12px; 
+        }
+
+        .list-navigasi .link-menu {
+            color: #e2d7ca;
+            text-decoration: none; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .list-navigasi .link-menu:hover, 
+        .list-navigasi .link-menu.aktif {
+            color: #c5a059;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+        }
+
+        .tombol-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #c5a059;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tombol-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .hero-header {
+            text-align: center;
+            padding: 150px 20px 40px 20px;
+            background: transparent;
+        }
+
+        .sub-judul-hero {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .judul-hero {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .pembatas-emas {
+            width: 100px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 20px auto;
+        }
+
+        .deskripsi-hero {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2d7ca;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .wadah-konten {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .input-filter {
+            display: none;
+        }
+
+        .bar-navigasi-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tombol-tab-filter {
+            background-color: rgba(44, 30, 15, 0.6);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            color: #e2d7ca;
+            padding: 10px 24px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            user-select: none;
+        }
+
+        .tombol-tab-filter:hover {
+            border-color: #c5a059;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+        }
+
+        #filter-semua:checked ~ .bar-navigasi-filter label[for="filter-semua"],
+        #filter-makanan:checked ~ .bar-navigasi-filter label[for="filter-makanan"],
+        #filter-camilan:checked ~ .bar-navigasi-filter label[for="filter-camilan"],
+        #filter-minuman:checked ~ .bar-navigasi-filter label[for="filter-minuman"] {
+            background-color: #c5a059;
+            color: #1a1105;
+            border-color: #c5a059;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        .grid-kuliner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .kartu-kuliner {
+            background-color: rgba(26, 17, 5, 0.75);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .kartu-kuliner:hover {
+            transform: translateY(-8px);
+            border-color: rgba(197, 160, 89, 0.5);
+            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.15);
+        }
+
+        .bingkai-foto-kartu {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background-color: #120c04;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+        }
+
+        .bingkai-foto-kartu img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .kartu-kuliner:hover .bingkai-foto-kartu img {
+            transform: scale(1.08);
+        }
+
+        .konten-kartu {
+            padding: 25px;
+        }
+
+        .kategori-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: #c5a059;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .nama-kuliner {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .paragraf-singkat {
+            font-size: 0.9rem;
+            color: rgba(226, 215, 202, 0.8);
+            text-align: justify;
+            margin-bottom: 20px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .daftar-spesifikasi {
+            list-style: none;
+            padding-top: 15px;
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+        }
+
+        .daftar-spesifikasi li {
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: flex-start;
+            color: rgba(226, 215, 202, 0.75);
+        }
+
+        .ikon-spek {
+            color: #c5a059;
+            margin-right: 10px;
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .label-spek {
+            color: #ffffff;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        #filter-makanan:checked ~ .grid-kuliner .kartu-kuliner:not(.makanan-utama),
+        #filter-camilan:checked ~ .grid-kuliner .kartu-kuliner:not(.camilan-tradisional),
+        #filter-minuman:checked ~ .grid-kuliner .kartu-kuliner:not(.minuman-legendaris) {
+            display: none;
+        }
+
+        footer {
+            background-color: rgba(18, 12, 4, 0.85);
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 70px 0 30px 0;
+            color: rgba(245,245,245,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .container-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .kolom-footer h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            border-left: 3px solid #c5a059; 
+            padding-left: 12px; 
+            line-height: 1.2; 
+        }
+
+        .kolom-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .kolom-footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .kolom-footer ul li a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .kolom-footer ul li a:hover {
+            color: #c5a059;
+            transform: translateX(5px);
+        }
+
+        .teks-tentang {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 15px;
+        }
+
+        .sosmed-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sosmed-footer a {
+            color: #c5a059;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .sosmed-footer a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .bawah-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 991px) {
+            .tombol-toggle {
+                display: block;
+            }
+
+            .wrapper-menu {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+
+            .toggle-nav-input:checked ~ .wrapper-menu {
+                display: block;
+            }
+
+            .list-navigasi {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .list-navigasi li {
+                margin: 0; 
+            }
+
+            .list-navigasi .link-menu {
+                font-size: 0.9rem;
+                padding: 10px 20px; 
+                width: 100%;
+                text-align: left; 
+            }
+            
+            .list-navigasi .link-menu:hover {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+
+            .grid-kuliner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .judul-hero {
+                font-size: 2.2rem;
+            }
+
+            .container-footer {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .grid-kuliner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-utama">
+        <div class="wadah-nav">
+            <a class="link-logo" href="home.html">
+                <span class="ikon-logo"><i class="fa-solid fa-gopuram"></i></span>
+                <span class="teks-logo">CIREBON</span>
+            </a>
+            
+            <input type="checkbox" id="btnToggleNav" class="toggle-nav-input">
+            <label class="tombol-toggle" for="btnToggleNav" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
+            <div class="wrapper-menu" id="boxNavMenu">
+                <ul class="list-navigasi">
+                    <li><a class="link-menu" href="home.html">Home</a></li>
+                    <li><a class="link-menu" href="sejarah.html">History</a></li>
+                    <li><a class="link-menu" href="arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
+                    <li><a class="link-menu aktif" href="kuliner.html">Culinary</a></li>
+                    <li><a class="link-menu" href="about.html">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <p class="sub-judul-hero">The Legendary Flavors</p>
+        <h1 class="judul-hero">Kuliner & <span class="teks-emas">Cita Rasa</span></h1>
+        <div class="pembatas-emas"></div>
+        <p class="deskripsi-hero">
+            Menikmati kekayaan bumbu rempah pesisir, seni pengolahan tradisional berumur ratusan tahun, serta kelezatan ikonik Kota Cirebon.
+        </p>
+    </header>
+
+    <main class="wadah-konten">
+
+        <input type="radio" id="filter-semua" name="kategori-kuliner" class="input-filter" checked>
+        <input type="radio" id="filter-makanan" name="kategori-kuliner" class="input-filter">
+        <input type="radio" id="filter-camilan" name="kategori-kuliner" class="input-filter">
+        <input type="radio" id="filter-minuman" name="kategori-kuliner" class="input-filter">
+
+        <div class="bar-navigasi-filter">
+            <label for="filter-semua" class="tombol-tab-filter">Semua Hidangan</label>
+            <label for="filter-makanan" class="tombol-tab-filter">Makanan Utama</label>
+            <label for="filter-camilan" class="tombol-tab-filter">Camilan Tradisional</label>
+            <label for="filter-minuman" class="tombol-tab-filter">Minuman Legendaris</label>
+        </div>
+
+        <div class="grid-kuliner">
+
+            <div class="kartu-kuliner makanan-utama">
+                <div class="bingkai-foto-kartu">
+                    <img src="jamblang.jpg" alt="Sega Jamblang">
+                </div>
+                <div class="konten-kartu">
+                    <span class="kategori-tag">Makanan Utama</span>
+                    <h2 class="nama-kuliner">Sega Jamblang</h2>
+                    <p class="paragraf-singkat">
+                        Nasi Jamblang atau Sega Jamblang adalah ikon kuliner rakyat Cirebon yang disajikan di atas daun jati alami. Karakteristik pori-pori daun jati menjaga kehangatan nasi tanpa membuatnya lembek, serta memberikan aroma kayu hutan yang khas.
+                    </p>
+                    <ul class="daftar-spesifikasi">
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Pembungkus:</span> Daun Jati Alami</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Lauk Unggulan:</span> Balakutak Sotong Hitam & Semur</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Tekstur Rasa:</span> Gurih Rempah Beraroma Khas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="kartu-kuliner makanan-utama">
+                <div class="bingkai-foto-kartu">
+                    <img src="empal.jpg" alt="Empal Gentong">
+                </div>
+                <div class="konten-kartu">
+                    <span class="kategori-tag">Makanan Utama</span>
+                    <h2 class="nama-kuliner">Empal Gentong</h2>
+                    <p class="paragraf-singkat">
+                        Sup daging sapi berkuah santan kuning kental dengan rempah melimpah. Dimasak secara perlahan menggunakan kuali tanah liat kuno dan dibakar dengan kayu pohon mangga yang menghasilkan aroma asap manis alami yang khas.
+                    </p>
+                    <ul class="daftar-spesifikasi"> 
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Alat Masak:</span> Gentong Tanah Liat</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Bahan Bakar:</span> Kayu Bakar Pohon Mangga</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Penyajian:</span> Taburan Kucai & Bubuk Cabai</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="kartu-kuliner minuman-legendaris">
+                <div class="bingkai-foto-kartu">
+                    <img src="tjampolay.jpg" alt="Tjampolay Syrup">
+                </div>
+                <div class="konten-kartu">
+                    <span class="kategori-tag">Minuman Legendaris</span>
+                    <h2 class="nama-kuliner">Tjampolay Syrup</h2>
+                    <p class="paragraf-singkat">
+                        Sirup legendaris warisan budaya kuliner Cirebon yang diproduksi sejak tahun 1936 oleh Tan Tjin Kiat. Dibuat menggunakan resep gula murni tradisional dengan varian rasa ikonik Pisang Susu yang harum dan manis khas.
+                    </p>
+                    <ul class="daftar-spesifikasi">
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Tahun Berdiri:</span> Sejak 1936 Masehi</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Pemanis:</span> 100% Gula Tebu Murni</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Rasa Terkenal:</span> Pisang Susu (Rozen Rose)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="kartu-kuliner makanan-utama">
+                <div class="bingkai-foto-kartu">
+                    <img src="docang.jpg" alt="Docang Cirebon">
+                </div>
+                <div class="konten-kartu">
+                    <span class="kategori-tag">Makanan Utama</span>
+                    <h2 class="nama-kuliner">Docang Cirebon</h2>
+                    <p class="paragraf-singkat">
+                        Kuliner sarapan legendaris berupa perpaduan lontong, tauge, daun singkong, dan parutan kelapa yang disiram kuah panas dari olahan tempe busuk (oncom merah). Hidangan unik ini memiliki rasa asam-gurih menyegarkan.
+                    </p>
+                    <ul class="daftar-spesifikasi">
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Bahan Kuah:</span> Oncom Merah (Dage)</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Pelengkap:</span> Kerupuk Melarat & Daun Singkong</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Cita Rasa:</span> Gurih Unik Asam Menyegarkan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="kartu-kuliner camilan-tradisional">
+                <div class="bingkai-foto-kartu">
+                    <img src="gejrot.jpg" alt="Tahu Gejrot">
+                </div>
+                <div class="konten-kartu">
+                    <span class="kategori-tag">Camilan Tradisional</span>
+                    <h2 class="nama-kuliner">Tahu Gejrot</h2>
+                    <p class="paragraf-singkat">
+                        Kudapan sore berbahan dasar tahu pong kopong khas Cirebon. Dipotong kecil lalu disiram kuah asam manis gula merah yang diulek kasar langsung bersama bawang merah dan cabai rawit segar di atas layah tanah liat mini.
+                    </p>
+                    <ul class="daftar-spesifikasi">
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Tipe Tahu:</span> Tahu Pong Goreng Kopong</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Ulekan:</span> Bawang Merah & Cabai Rawit Mentah</li>
+                        <li><span class="ikon-spek">✦</span><span class="label-spek">Rasa Kuah:</span> Manis Pedas Asam Jawa Menyengat</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <div class="kolom-footer">
+                <h4>History & Palace</h4>
+                <ul>
+                    <li><a href="sejarah.html">Caruban Nagari</a></li>
+                    <li><a href="sejarah.html">Sunan Gunung Jati</a></li>
+                    <li><a href="arsitektur.html">Kasepuhan Palace</a></li>
+                    <li><a href="arsitektur.html">Kanoman Palace</a></li>
+                    <li><a href="arsitektur.html">Kacirebonan Palace</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Arts & Music</h4>
+                <ul>
+                    <li><a href="seni.html">Mask Dance</a></li>
+                    <li><a href="seni.html">Philosophical Move</a></li>
+                    <li><a href="musik.html">Gamelan Renteng</a></li>
+                    <li><a href="musik.html">Tarling Coastal</a></li>
+                    <li><a href="musik.html">Seni Gending</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Culinary</h4>
+                <ul>
+                    <li><a href="kuliner.html">Sega Jamblang</a></li>
+                    <li><a href="kuliner.html">Empal Gentong</a></li>
+                    <li><a href="kuliner.html">Tjampolay Syrup</a></li>
+                    <li><a href="kuliner.html">Docang Cirebon</a></li>
+                    <li><a href="kuliner.html">Tahu Gejrot</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>About Me</h4>
+                <p class="teks-tentang">
+                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
+                </p>
+                <div class="sosmed-footer">
+                    <a href="https://github.com" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bawah-footer">
+            <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
