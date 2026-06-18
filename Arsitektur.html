@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsitektur & Keraton - Pesona Budaya Cirebon</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #e2d7ca;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+        h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+        .teks_emas {
+            color: #c5a059;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 17, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 15px 0;
+        }
+        .container-nav {
+            width: 100%;
+            padding: 0 5%; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: relative;
+            outline: none;
+        }
+        .link-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .ikon-logo {
+            color: #c5a059;
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+        .teks-logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+        .wrapper-menu {
+            display: flex;
+        }
+        .list-navigasi {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .list-navigasi li {
+            margin: 0 12px; 
+        }
+        .list-navigasi .link-menu {
+            color: #e2d7ca;
+            text-decoration: none; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        .list-navigasi .link-menu:hover {
+            color: #c5a059;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+        }
+        .list-navigasi .link-menu.aktif {
+            color: #c5a059;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+        }
+        .tombol-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #c5a059;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .tombol-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+        .hero-header {
+            text-align: center;
+            padding: 150px 20px 60px 20px;
+            background: transparent;
+        }
+        .sub-judul-hero {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+        .judul-hero {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .pembatas-emas {
+            width: 100px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 20px auto;
+        }
+        .deskripsi-hero  {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2d7ca;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        .wadah-konten {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .baris-budaya {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .baris-budaya.arah-terbalik {
+            flex-direction: row-reverse;
+        }
+        .area-foto {
+            flex: 1;
+        }
+        .bingkai-foto {
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            aspect-ratio: 4/3;
+            background-color: #1a1105;
+        }
+        .bingkai-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .bingkai-foto:hover img {
+            transform: scale(1.08);
+        }
+        .area-teks {
+            flex: 1.2;
+        }
+        .judul-sesi {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .nomor-sesi {
+            color: #c5a059;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .garis-sub {
+            width: 60px;
+            height: 2px;
+            background-color: #c5a059;
+            margin-bottom: 25px;
+        }
+        .paragraf-cerita {
+            text-align: justify;
+            text-indent: 40px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: rgba(226, 215, 202, 0.9);
+        }
+        .teks-highlight {
+            color: #e5c17d;
+            font-weight: 600;
+        }
+        .daftar-spesifikasi {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding-top: 15px;
+        }
+        .daftar-spesifikasi li {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            color: rgba(226, 215, 202, 0.85);
+        }
+        .ikon-spek {
+            color: #c5a059;
+            margin-right: 12px;
+            font-size: 0.8rem;
+        }
+        .label-spek {
+            color: #ffffff;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .bagian-filosofi {
+            margin: 100px 0 40px 0;
+        }
+        .judul-filosofi-seksi {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .sub-judul-kecil {
+            font-size: 0.8rem;
+        }
+        .deskripsi-dropdown {
+            font-size: 0.9rem;
+            color: rgba(226, 215, 202, 0.7);
+        }
+        .wadah-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .accordion-item {
+            background-color: rgba(44, 30, 15, 0.85);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 8px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            color: #ffffff;
+            cursor: pointer;
+            padding: 20px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            outline: none;
+            list-style: none;
+        }
+        .accordion-header::-webkit-details-marker {
+            display: none;
+        }
+        .accordion-header::after {
+            content: '▼';
+            color: #c5a059;
+            font-size: 0.8rem;
+            transition: transform 0.4s ease;
+        }
+        .accordion-item[open] .accordion-header::after {
+            transform: rotate(180deg);
+        }
+        .accordion-item[open] .accordion-header {
+            background-color: rgba(26, 17, 5, 0.95);
+            color: #e5c17d;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        }
+        .panel {
+            background-color: rgba(26, 17, 5, 0.3);
+        }
+        .panel-content {
+            padding: 25px;
+            color: #e2d7ca;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        footer {
+            background-color: rgba(18, 12, 4, 0.85);
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 70px 0 30px 0;
+            color: rgba(245,245,245,0.6);
+            backdrop-filter: blur(5px);
+        }
+        .container-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+        .kolom-footer h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            border-left: 3px solid #c5a059; 
+            padding-left: 12px; 
+            line-height: 1.2; 
+        }
+        .kolom-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .kolom-footer ul li {
+            margin-bottom: 12px;
+        }
+        .kolom-footer ul li a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .kolom-footer ul li a:hover {
+            color: #c5a059;
+            transform: translateX(5px);
+        }
+        .teks-tentang {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 15px;
+        }
+        .sosmed-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .sosmed-footer a {
+            color: #c5a059;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .sosmed-footer a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+        .bawah-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        @media (max-width: 991px) {
+            .tombol-toggle {
+                display: block;
+            }
+            .wrapper-menu {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+            .container-nav:focus-within .wrapper-menu {
+                display: block;
+            }
+            .list-navigasi {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .list-navigasi li {
+                margin: 0; 
+            }
+            .list-navigasi .link-menu {
+                font-size: 0.9rem;
+                padding: 10px 20px; 
+                width: 100%;
+                text-align: left; 
+            }
+            .list-navigasi .link-menu:hover {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+            .judul-hero {
+                font-size: 2.2rem;
+            }
+            .baris-budaya {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+            .baris-budaya.arah-terbalik {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+            .area-foto {
+                width: 100%;
+            }
+            .area-teks {
+                width: 100%;
+            }
+            .container-footer {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container-nav" tabindex="0">
+            <a class="link-logo" href="index.html">
+                <span class="ikon-logo"><i class="fa-solid fa-gopuram"></i></span>
+                <span class="teks-logo">CIREBON</span>
+            </a>
+            
+            <button class="tombol-toggle" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="wrapper-menu" id="boxNavMenu">
+                <ul class="list-navigasi">
+                    <li><a class="link-menu" href="index.html">Home</a></li>
+                    <li><a class="link-menu" href="Sejarah.html">History</a></li>
+                    <li><a class="link-menu aktif" href="Arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
+                    <li><a class="link-menu" href="Kuliner.html">Culinary</a></li>
+                    <li><a class="link-menu" href="about.html">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <p class="sub-judul-hero">The Architectural Treasures</p>
+        <h1 class="judul-hero">Arsitektur & <span class="teks_emas">Keraton</span></h1>
+        <div class="pembatas-emas"></div>
+        <p class="deskripsi-hero">
+            Menyelami keagungan takhta spiritual, perpaduan seni ukir multikultural, serta peninggalan bersejarah tiga istana utama Cirebon.
+        </p>
+    </header>
+
+    <main class="wadah-konten">
+        
+        <section class="baris-budaya" id="kasepuhan">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="kasepuhan.png" alt="Keraton Kasepuhan">
+                </div>
+            </div>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">I.</span>
+                    <h2>Kasepuhan Palace</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-cerita">
+                    Merupakan keraton tertua, terbesar, dan paling megah di Cirebon yang dibangun pada tahun 1529 oleh <span class="teks-highlight">Pangeran Cakrabuana</span>. Kompleks istana ini menjadi saksi hidup awal mula penyebaran pengaruh politik dan spiritual Islam di wilayah pesisir Jawa Barat.
+                </p>
+                <p class="paragraf-cerita">
+                    Gaya arsitektur bangunan utama Keraton Kasepuhan sangat unik karena memadukan berbagai budaya dunia secara harmonis. Hal ini terlihat jelas dari penggunaan gerbang bata merah tanpa perekat khas Majapahit (Hindu-Jawa), hiasan dinding keramik porselen antik peninggalan <span class="teks-highlight">Dinasti Ming Tiongkok</span>, serta pilar bangunan utama beraksen Eropa kolonial.
+                </p>
+                <ul class="daftar-spesifikasi">
+                    <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> 1529 Masehi</li>
+                    <li><span class="ikon-spek"></span><span class="label-spek">Pendiri Utama:</span> Pangeran Walangsungsang (Pangeran Cakrabuana)</li>
+                    <li><span class="ikon-spek"></span><span class="label-spek">Ciri Khas Struktur:</span> Gerbang Candi Bentar, pilar bergaya Eropa, & hiasan porselen Dinasti Ming</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="baris-budaya arah-terbalik" id="kanoman">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="kanoman.png" alt="Keraton Kanoman">
+                </div>
+            </div>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">II.</span>
+                    <h2>Kanoman Palace</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-cerita">
+                    Didirikan oleh Sultan Anom I pada tahun 1678 Masehi menyusul adanya pembagian kekuasaan di dalam silsilah keluarga Kesultanan Cirebon. Kompleks Keraton Kanoman dikenal memiliki nuansa spiritual keagamaan Islam tradisional yang sangat kental dan dijaga ketat oleh masyarakat adat.
+                </p>
+                <p class="paragraf-cerita">
+                    Di dalam wilayah keraton ini, tersimpan berbagai macam pusaka kuno yang sangat sakral, salah satunya adalah <span class="teks-highlight">Kereta Paksi Naga Liman</span>. Kereta perang kuno tersebut memiliki bentuk legendaris perpaduan burung, naga, dan gajah yang menjadi simbol kerukunan umat beragama di Cirebon sejak berabad-abad silam.
+                </p>
+                <ul class="daftar-spesifikasi">
+                    <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> 1678 Masehi</li>
+                    <li><span class="ikon-spek"></span><span class="label-spek">Pendiri Utama:</span> Sultan Anom I (Pangeran Kartawijaya)</li>
+                    <li><span class="ikon-spek"></span><span class="label-spek">Ciri Khas Struktur:</span> Bangunan Siti Hinggil yang khas, area pelataran sakral, & museum pusaka khusus</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="baris-budaya" id="kacirebonan">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="kacirebonan.png" alt="Keraton Kacirebonan">
+                </div>
+            </div>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">III.</span>
+                    <h2>Kacirebonan Palace</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-cerita">
+                    Keraton Kacirebonan adalah istana dengan ukuran yang paling kecil dan ringkas di antara ketiga keraton utama di Cirebon. Dibangun pada awal abad ke-19, keraton ini didirikan oleh Pangeran Raja Kanoman yang kemudian dianugerahi gelar sebagai Sultan Kacirebonan I.
+                </p>
+                <p class="paragraf-cerita">
+                    Meskipun areanya tidak seluas Kasepuhan, Kacirebonan menawarkan pesona tata ruang yang hangat. Arsitekturnya memadukan fungsionalitas tempat tinggal adat bangsawan Jawa yang ramah dengan sentuhan gaya <span class="teks-highlight">arsitektur Eropa modern</span> pada pintu jendela besar serta pilar teras depannya yang artistik.
+                </p>
+                <ul class="daftar-spesifikasi">
+                    <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> 1808 Masehi</li>
+                    <li><span class="ikon-spek"></span><span class="label-spek">Pendiri Utama:</span> Pangeran Raja Kanoman (Sultan Kacirebonan I)</li>
+                    <li><span class="ikon-spek"></span><span class="label-spek">Ciri Khas Struktur:</span> Konsep rumah adat panggung bangsawan Jawa tengah yang beraksen kolonial minimalis</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="bagian-filosofi">
+            <div class="judul-filosofi-seksi">
+                <p class="sub-judul-hero sub-judul-kecil">Keunikan Arsitektur</p>
+                <h2>Filosofi Elemen & Ornamen</h2>
+                <div class="pembatas-emas"></div>
+                <p class="deskripsi-dropdown">Klik pada panel di bawah untuk membuka eksplorasi makna simbolis arsitektur Cirebon.</p>
+            </div>
+
+            <div class="wadah-accordion">
+                
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span>Gerbang Lawang Bata Merah (Candi Bentar)</span>
+                    </summary>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Struktur gerbang luar tanpa perekat semen yang dijumpai di Keraton Kasepuhan mengadopsi gaya arsitektur candi pra-Islam dari kerajaan Majapahit. Keberadaan gapura ini menyimbolkan proses transisi spiritual sekaligus bentuk penghargaan para pendiri kesultanan terhadap keagungan budaya leluhur Nusantara terdahulu.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span>Keramik Porselen Dinasti Ming</span>
+                    </summary>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Ratusan piring porselen kuno dari daratan Tiongkok yang tertempel indah menghiasi dinding keraton merupakan saksi bisu harmonisnya hubungan diplomatik dan perdagangan laut internasional. Secara spiritual, porselen putih-biru ini melambangkan kesucian hati serta asimilasi damai antara kultur pesisir Jawa dan Asia Timur.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span>Ornamen Tiang Saka Guru & Pendopo</span>
+                    </summary>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Tiang-tiang kayu jati penyangga utama (saka guru) di dalam pendopo keraton tidak hanya berfungsi sebagai fondasi struktural, melainkan membawa makna filosofis Islam yang kokoh. Struktur ini melambangkan keteguhan iman dan tiang agama, sementara ukiran motif Mega Mendung pada bagian atasnya mencerminkan kedamaian spiritual yang menaungi rakyat di bawahnya.</p>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <div class="kolom-footer">
+                <h4>History & Palace</h4>
+                <ul>
+                    <li><a href="Sejarah.html#caruban">Caruban Nagari</a></li>
+                    <li><a href="Sejarah.html#sunan">Sunan Gunung Jati</a></li>
+                    <li><a href="Arsitektur.html#kasepuhan">Kasepuhan Palace</a></li>
+                    <li><a href="Arsitektur.html#kanoman">Kanoman Palace</a></li>
+                    <li><a href="Arsitektur.html#kacirebonan">Kacirebonan Palace</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Arts & Music</h4>
+                <ul>
+                    <li><a href="seni.html#mask-dance">Mask Dance</a></li>
+                    <li><a href="seni.html#philosophical-move">Philosophical Move</a></li>
+                    <li><a href="musik.html#gamelan">Gamelan Renteng</a></li>
+                    <li><a href="musik.html#tarling">Tarling Coastal</a></li>
+                    <li><a href="musik.html#gending">Seni Gending</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Culinary</h4>
+                <ul>
+                    <li><a href="Kuliner.html#jamblang">Sega Jamblang</a></li>
+                    <li><a href="Kuliner.html#empal">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html#tjampolay">Tjampolay Syrup</a></li>
+                    <li><a href="Kuliner.html#docang">Docang Cirebon</a></li>
+                    <li><a href="Kuliner.html#gejrot">Tahu Gejrot</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>About Me</h4>
+                <p class="teks-tentang">
+                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
+                </p>
+                <div class="sosmed-footer">
+                    <a href="https://github.com/Vincent-palar" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/eminslocinnahtanle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/nicolas-elnathan-382061383/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bawah-footer">
+            <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
