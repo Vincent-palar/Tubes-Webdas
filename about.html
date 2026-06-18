@@ -717,7 +717,6 @@
                 var feedbacks = stored ? JSON.parse(stored) : [];
                 var container = $('#containerFeedback');
                 container.empty();
-
                 if (feedbacks.length === 0) {
                     container.append('<p style="color: rgba(226, 215, 202, 0.5); text-align: center; font-style: italic; padding: 20px 0;">Belum ada masukan yang dikirimkan.</p>');
                 } else {
@@ -726,9 +725,7 @@
                         var header = $('<div>').addClass('header-feedback')
                             .append($('<span>').addClass('nama-feedback').text(item.nama))
                             .append($('<span>').addClass('tanggal-feedback').text(item.tanggal));
-                        
                         var content = $('<div>').addClass('isi-feedback').text(item.masukan);
-                        
                         card.append(header).append(content);
                         container.append(card);
                     });
@@ -739,34 +736,26 @@
                 e.preventDefault();
                 var namaInput = $('#nama').val().trim();
                 var masukanInput = $('#masukan').val().trim();
-
                 if (namaInput === '' || masukanInput === '') {
                     alert('Harap isi Nama Lengkap dan Masukan / Saran Anda terlebih dahulu sebelum mengirim.');
                     return;
                 }
-
                 var stored = localStorage.getItem('cirebon_feedbacks');
                 var feedbacks = stored ? JSON.parse(stored) : [];
-
                 var now = new Date();
                 var pad = function(num) { return (num < 10 ? '0' : '') + num; };
                 var tanggalStr = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear() + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
-
                 feedbacks.push({
                     nama: namaInput,
                     masukan: masukanInput,
                     tanggal: tanggalStr
                 });
-
                 localStorage.setItem('cirebon_feedbacks', JSON.stringify(feedbacks));
-                
                 $('#nama').val('');
                 $('#masukan').val('');
-                
                 loadFeedbacks();
                 alert('Terima kasih atas kontribusi Anda! Masukan Anda telah berhasil kami simpan.');
             });
-
             loadFeedbacks();
         });
     </script>
