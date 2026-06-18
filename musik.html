@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -247,91 +247,6 @@
             color: #e5c17d;
         }
 
-        .bagian-filosofi {
-            margin: 80px 0 40px 0;
-        }
-
-        .judul-filosofi-seksi {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .deskripsi-dropdown {
-            font-size: 0.9rem;
-            color: rgba(226, 215, 202, 0.7);
-        }
-
-        .wadah-accordion {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .accordion-item {
-            margin-top: 15px;
-        }
-
-        .accordion {
-            background-color: rgba(44, 30, 15, 0.85);
-            color: #ffffff;
-            cursor: pointer;
-            padding: 20px;
-            width: 100%;
-            text-align: left;
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            outline: none;
-            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: 1.05rem;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-        }
-
-        .panah-akordeon {
-            color: #c5a059;
-            font-size: 0.8rem;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-        }
-
-        .accordion:hover {
-            background-color: rgba(26, 17, 5, 0.95);
-            color: #e5c17d;
-            border-color: rgba(197, 160, 89, 0.5);
-        }
-
-        .accordion-item.aktif .accordion {
-            background-color: rgba(26, 17, 5, 0.95);
-            color: #e5c17d;
-            border-color: rgba(197, 160, 89, 0.5);
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        .accordion-item.aktif .panah-akordeon {
-            transform: rotate(180deg);
-        }
-
-        .panel {
-            background-color: rgba(26, 17, 5, 0.3);
-            display: none;
-            border-left: 1px solid rgba(197, 160, 89, 0.1);
-            border-right: 1px solid rgba(197, 160, 89, 0.1);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            color: #e2d7ca;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .panel-content {
-            padding: 25px;
-        }
-
         footer {
             background-color: rgba(18, 12, 4, 0.85);
             border-top: 1px solid rgba(197, 160, 89, 0.15);
@@ -421,9 +336,8 @@
 
         @media (max-width: 767px) {
             .tombol-toggle {
-                display: block !important;
+                display: block;
             }
-
             .wrapper-menu {
                 display: none; 
                 position: absolute;
@@ -437,27 +351,22 @@
                 padding: 15px 0;
                 border-radius: 6px;
             }
-
-            .toggle-nav-input:checked ~ .wrapper-menu {
+            .wadah-nav:focus-within .wrapper-menu {
                 display: block;
             }
-
             .list-navigasi {
                 flex-direction: column;
                 align-items: stretch;
             }
-
             .list-navigasi li {
                 margin: 0; 
             }
-
             .list-navigasi .link-menu {
                 font-size: 0.9rem;
-                padding: 10px 20px !important; 
+                padding: 10px 20px; 
                 width: 100%;
                 text-align: left; 
             }
-            
             .list-navigasi .link-menu:hover {
                 background-color: rgba(197, 160, 89, 0.1);
             }
@@ -588,55 +497,6 @@
             </div>
         </section>
 
-        <section class="bagian-filosofi">
-            <div class="judul-filosofi-seksi">
-                <p class="sub-judul-hero sub-judul-kecil">Keunikan Harmoni</p>
-                <h2>Filosofi & Waditra Musik</h2>
-                <div class="pembatas-emas"></div>
-                <p class="deskripsi-dropdown">Klik pada panel di bawah untuk membuka eksplorasi makna mendalam instrumen musik Cirebon.</p>
-            </div>
-
-            <div class="wadah-accordion">
-                
-                <div class="accordion-item">
-                    <button class="accordion" type="button">
-                        <span>✦ Filosofi Nada Laras Pentatonis</span>
-                        <span class="panah-akordeon">▼</span>
-                    </button>
-                    <div class="panel">
-                        <div class="panel-content">
-                            <p>Sistem nada laras (Slendro & Pelog) pada musik Gamelan Cirebon memiliki frekuensi unik yang menyimbolkan keseimbangan alam mikro (manusia) dan alam makro (semesta). Setiap ritem ketukan gong membawa esensi spiritual pengingat keteguhan jati diri di hadapan Sang Maha Agung.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion" type="button">
-                        <span>✦ Waditra Utama Gamelan Renteng</span>
-                        <span class="panah-akordeon">▼</span>
-                    </button>
-                    <div class="panel">
-                        <div class="panel-content">
-                            <p>Waditra (instrumen) Gamelan Renteng didominasi oleh deretan pencon logam perunggu tebal berkepala cembung, gong besar, serta kendang berpenampang ganda. Struktur ritem yang berulang secara matematis mengajarkan disiplin hidup dan keteraturan moral bermasyarakat.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion" type="button">
-                        <span>✦ Dawai Gitar & Suling Tarling</span>
-                        <span class="panah-akordeon">▼</span>
-                    </button>
-                    <div class="panel">
-                        <div class="panel-content">
-                            <p>Perpaduan petikan kawat dawai gitar bermutu modern beradu dengan tiupan suling bambu tradisional yang meliuk-liuk melambangkan adaptabilitas masyarakat pesisir Cirebon yang selalu terbuka terhadap kultur asing luar tanpa menanggalkan identitas lokal mereka.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
     </main>
 
     <footer>
@@ -666,11 +526,11 @@
             <div class="kolom-footer">
                 <h4>Culinary</h4>
                 <ul>
-                    <li><a href="Kuliner.html">Sega Jamblang</a></li>
-                    <li><a href="Kuliner.html">Empal Gentong</a></li>
-                    <li><a href="Kuliner.html">Tjampolay Syrup</a></li>
-                    <li><a href="Kuliner.html">Docang Cirebon</a></li>
-                    <li><a href="Kuliner.html">Tahu Gejrot</a></li>
+                    <li><a href="Kuliner.html#jamblang">Sega Jamblang</a></li>
+                    <li><a href="Kuliner.html#empal">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html#tjampolay">Tjampolay Syrup</a></li>
+                    <li><a href="Kuliner.html#docang">Docang Cirebon</a></li>
+                    <li><a href="Kuliner.html#gejrot">Tahu Gejrot</a></li>
                 </ul>
             </div>
             
@@ -680,9 +540,9 @@
                     Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
                 </p>
                 <div class="sosmed-footer">
-                    <a href="https://github.com" aria-label="Github"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Vincent-palar" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/eminslocinnahtanle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/nicolas-elnathan-382061383/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -695,22 +555,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#btnToggleNav').click(function() {
-                $('#boxNavMenu').slideToggle(300);
-            });
-            $('.accordion').click(function() {
-                var item = $(this).parent();
-                var panel = $(this).next();
-                if (item.hasClass('aktif')) {
-                    item.removeClass('aktif');
-                    panel.slideUp(400);
-                } else {
-                    $('.accordion-item').removeClass('aktif');
-                    $('.panel').slideUp(400);
-                    item.addClass('aktif');
-                    panel.slideDown(400);
-                }
-            });
             if ($("#bg-audio").length === 0) {
                 $("body").append(`
                     <audio id="bg-audio" loop>
