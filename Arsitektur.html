@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,22 +28,7 @@
             overflow-x: hidden;
             line-height: 1.8;
         }
-        h1 {
-            font-family: 'Cinzel', serif;
-            color: #ffffff;
-            letter-spacing: 2px;
-        }
-        h2 {
-            font-family: 'Cinzel', serif;
-            color: #ffffff;
-            letter-spacing: 2px;
-        }
-        h3 {
-            font-family: 'Cinzel', serif;
-            color: #ffffff;
-            letter-spacing: 2px;
-        }
-        h4 {
+        h1, h2, h3, h4 {
             font-family: 'Cinzel', serif;
             color: #ffffff;
             letter-spacing: 2px;
@@ -118,6 +103,9 @@
             color: #c5a059;
             text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
         }
+        .toggle-nav-input {
+            display: none;
+        }
         .tombol-toggle {
             display: none;
             background: none;
@@ -134,6 +122,7 @@
             margin: 4px 0;
             transition: 0.3s;
         }
+        
         .hero-header {
             text-align: center;
             padding: 150px 20px 60px 20px;
@@ -166,6 +155,7 @@
             font-size: 1rem;
             font-weight: 300;
         }
+        
         .wadah-konten {
             max-width: 1200px;
             margin: 0 auto;
@@ -234,6 +224,7 @@
             color: #e5c17d;
             font-weight: 600;
         }
+        
         .daftar-spesifikasi {
             list-style: none;
             padding: 0;
@@ -251,13 +242,16 @@
         .ikon-spek {
             color: #c5a059;
             margin-right: 12px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
         }
         .label-spek {
             color: #ffffff;
             font-weight: 600;
             margin-right: 8px;
         }
+        
         .bagian-filosofi {
             margin: 100px 0 40px 0;
         }
@@ -283,7 +277,7 @@
             margin-top: 15px;
             overflow: hidden;
         }
-        .accordion-header {
+        .accordion {
             color: #ffffff;
             cursor: pointer;
             padding: 20px;
@@ -295,18 +289,22 @@
             align-items: center;
             user-select: none;
             outline: none;
-            list-style: none;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
-        .accordion-header::after {
+        .accordion::after {
             content: '▼';
             color: #c5a059;
             font-size: 0.8rem;
             transition: transform 0.4s ease;
         }
-        .accordion-header.aktif::after {
+        .accordion.aktif::after {
             transform: rotate(180deg);
         }
-        .accordion-header.aktif {
+        .accordion.aktif {
             background-color: rgba(26, 17, 5, 0.95);
             color: #e5c17d;
             border-bottom: 1px solid rgba(197, 160, 89, 0.3);
@@ -317,6 +315,16 @@
             overflow: hidden;
             transition: max-height 0.4s ease-out;
         }
+        .panel-content {
+            padding: 25px;
+            color: #e2d7ca;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .bukaPanel {
+            max-height: 500px;
+        }
+        
         footer {
             background-color: rgba(18, 12, 4, 0.85);
             border-top: 1px solid rgba(197, 160, 89, 0.15);
@@ -393,6 +401,7 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.3);
         }
+        
         @media (max-width: 991px) {
             .tombol-toggle {
                 display: block;
@@ -409,6 +418,9 @@
                 box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
                 padding: 15px 0;
                 border-radius: 6px;
+            }
+            .toggle-nav-input:checked ~ .wrapper-menu {
+                display: block !important;
             }
             .list-navigasi {
                 flex-direction: column;
@@ -462,11 +474,12 @@
                 <span class="teks-logo">CIREBON</span>
             </a>
             
-            <button class="tombol-toggle" id="btnToggleNav" aria-label="Menu">
+            <input type="checkbox" id="hamburger" class="toggle-nav-input">
+            <label class="tombol-toggle" for="hamburger" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </label>
             
             <div class="wrapper-menu" id="boxNavMenu">
                 <ul class="list-navigasi">
@@ -496,7 +509,7 @@
         <section class="baris-budaya" id="kasepuhan">
             <div class="area-foto">
                 <div class="bingkai-foto">
-                    <img src="kasepuhan.png" alt="Keraton Kasepuhan">
+                    <img src="kasepuhan.png" alt="Keraton Kasepuhan" onerror="this.onerror=null; this.src='https://placehold.co/600x450/1a1105/c5a059?text=Keraton+Kasepuhan'">
                 </div>
             </div>
             <div class="area-teks">
@@ -506,15 +519,15 @@
                 </div>
                 <div class="garis-sub"></div>
                 <p class="paragraf-cerita">
-                    Merupakan keraton tertua, terbesar, and paling megah di Cirebon yang dibangun pada tahun 1529 oleh <span class="teks-highlight">Pangeran Cakrabuana</span>. Kompleks istana ini menjadi saksi hidup awal mula penyebaran pengaruh politik and spiritual Islam di wilayah pesisir Jawa Barat.
+                    Merupakan keraton tertua, terbesar, dan paling megah di Cirebon yang dibangun pada tahun 1529 oleh <span class="teks-highlight">Pangeran Cakrabuana</span>. Kompleks istana ini menjadi saksi hidup awal mula penyebaran pengaruh politik dan spiritual Islam di wilayah pesisir Jawa Barat.
                 </p>
                 <p class="paragraf-cerita">
                     Gaya arsitektur bangunan utama Keraton Kasepuhan sangat unik karena memadukan berbagai budaya dunia secara harmonis. Hal ini terlihat jelas dari penggunaan gerbang bata merah tanpa perekat khas Majapahit (Hindu-Jawa), hiasan dinding keramik porselen antik peninggalan <span class="teks-highlight">Dinasti Ming Tiongkok</span>, serta pilar bangunan utama beraksen Eropa kolonial.
                 </p>
                 <ul class="daftar-spesifikasi">
-                    <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> 1529 Masehi</li>
-                    <li><span class="ikon-spek"></span><span class="label-spek">Pendiri Utama:</span> Pangeran Walangsungsang (Pangeran Cakrabuana)</li>
-                    <li><span class="ikon-spek"></span><span class="label-spek">Ciri Khas Struktur:</span> Gerbang Candi Bentar, pilar bergaya Eropa, & hiasan porselen Dinasti Ming</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-calendar-days"></i></span><span class="label-spek">Tahun Berdiri:</span> 1529 Masehi</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-user-shield"></i></span><span class="label-spek">Pendiri Utama:</span> Pangeran Walangsungsang (Pangeran Cakrabuana)</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-gopuram"></i></span><span class="label-spek">Ciri Khas Struktur:</span> Gerbang Candi Bentar, pilar bergaya Eropa, & hiasan porselen Dinasti Ming</li>
                 </ul>
             </div>
         </section>
@@ -522,7 +535,7 @@
         <section class="baris-budaya arah-terbalik" id="kanoman">
             <div class="area-foto">
                 <div class="bingkai-foto">
-                    <img src="kanoman.png" alt="Keraton Kanoman">
+                    <img src="kanoman.png" alt="Keraton Kanoman" onerror="this.onerror=null; this.src='https://placehold.co/600x450/1a1105/c5a059?text=Keraton+Kanoman'">
                 </div>
             </div>
             <div class="area-teks">
@@ -532,15 +545,15 @@
                 </div>
                 <div class="garis-sub"></div>
                 <p class="paragraf-cerita">
-                    Didirikan oleh Sultan Anom I pada tahun 1678 Masehi menyusul adanya pembagian kekuasaan di dalam silsilah keluarga Kesultanan Cirebon. Kompleks Keraton Kanoman dikenal memiliki nuansa spiritual keagamaan Islam tradisional yang sangat kental and dijaga ketat oleh masyarakat adat.
+                    Didirikan oleh Sultan Anom I pada tahun 1678 Masehi menyusul adanya pembagian kekuasaan di dalam silsilah keluarga Kesultanan Cirebon. Kompleks Keraton Kanoman dikenal memiliki nuansa spiritual keagamaan Islam tradisional yang sangat kental dan dijaga ketat oleh masyarakat adat.
                 </p>
                 <p class="paragraf-cerita">
-                    Di dalam wilayah keraton ini, tersimpan berbagai macam pusaka kuno yang sangat sakral, salah satunya adalah <span class="teks-highlight">Kereta Paksi Naga Liman</span>. Kereta perang kuno tersebut memiliki bentuk legendaris perpaduan burung, naga, and gajah yang menjadi simbol kerukunan umat beragama di Cirebon sejak berabad-abad silam.
+                    Di dalam wilayah keraton ini, tersimpan berbagai macam pusaka kuno yang sangat sakral, salah satunya adalah <span class="teks-highlight">Kereta Paksi Naga Liman</span>. Kereta perang kuno tersebut memiliki bentuk legendaris perpaduan burung, naga, dan gajah yang menjadi simbol kerukunan umat beragama di Cirebon sejak berabad-abad silam.
                 </p>
                 <ul class="daftar-spesifikasi">
-                    <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> 1678 Masehi</li>
-                    <li><span class="ikon-spek"></span><span class="label-spek">Pendiri Utama:</span> Sultan Anom I (Pangeran Kartawijaya)</li>
-                    <li><span class="ikon-spek"></span><span class="label-spek">Ciri Khas Struktur:</span> Bangunan Siti Hinggil yang khas, area pelataran sakral, & museum pusaka khusus</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-calendar-days"></i></span><span class="label-spek">Tahun Berdiri:</span> 1678 Masehi</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-user-shield"></i></span><span class="label-spek">Pendiri Utama:</span> Sultan Anom I (Pangeran Kartawijaya)</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-crown"></i></span><span class="label-spek">Ciri Khas Struktur:</span> Bangunan Siti Hinggil yang khas, area pelataran sakral, & museum pusaka khusus</li>
                 </ul>
             </div>
         </section>
@@ -548,7 +561,7 @@
         <section class="baris-budaya" id="kacirebonan">
             <div class="area-foto">
                 <div class="bingkai-foto">
-                    <img src="kacirebonan.png" alt="Keraton Kacirebonan">
+                    <img src="kacirebonan.png" alt="Keraton Kacirebonan" onerror="this.onerror=null; this.src='https://placehold.co/600x450/1a1105/c5a059?text=Keraton+Kacirebonan'">
                 </div>
             </div>
             <div class="area-teks">
@@ -558,15 +571,15 @@
                 </div>
                 <div class="garis-sub"></div>
                 <p class="paragraf-cerita">
-                    Keraton Kacirebonan adalah istana dengan ukuran yang paling kecil and ringkas di antara ketiga keraton utama di Cirebon. Dibangun pada awal abad ke-19, keraton ini didirikan oleh Pangeran Raja Kanoman yang kemudian dianugerahi gelar sebagai Sultan Kacirebonan I.
+                    Keraton Kacirebonan adalah istana dengan ukuran yang paling kecil dan ringkas di antara ketiga keraton utama di Cirebon. Dibangun pada awal abad ke-19, keraton ini didirikan oleh Pangeran Raja Kanoman yang kemudian dianugerahi gelar sebagai Sultan Kacirebonan I.
                 </p>
                 <p class="paragraf-cerita">
                     Meskipun areanya tidak seluas Kasepuhan, Kacirebonan menawarkan pesona tata ruang yang hangat. Arsitekturnya memadukan fungsionalitas tempat tinggal adat bangsawan Jawa yang ramah dengan sentuhan gaya <span class="teks-highlight">arsitektur Eropa modern</span> pada pintu jendela besar serta pilar teras depannya yang artistik.
                 </p>
                 <ul class="daftar-spesifikasi">
-                    <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> 1808 Masehi</li>
-                    <li><span class="ikon-spek"></span><span class="label-spek">Pendiri Utama:</span> Pangeran Raja Kanoman (Sultan Kacirebonan I)</li>
-                    <li><span class="ikon-spek"></span><span class="label-spek">Ciri Khas Struktur:</span> Konsep rumah adat panggung bangsawan Jawa tengah yang beraksen kolonial minimalis</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-calendar-days"></i></span><span class="label-spek">Tahun Berdiri:</span> 1808 Masehi</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-user-shield"></i></span><span class="label-spek">Pendiri Utama:</span> Pangeran Raja Kanoman (Sultan Kacirebonan I)</li>
+                    <li><span class="ikon-spek"><i class="fa-solid fa-building-columns"></i></span><span class="label-spek">Ciri Khas Struktur:</span> Konsep rumah adat panggung bangsawan Jawa tengah yang beraksen kolonial minimalis</li>
                 </ul>
             </div>
         </section>
@@ -582,9 +595,9 @@
             <div class="wadah-accordion">
                 
                 <div class="accordion-item">
-                    <div class="accordion-header">
+                    <button class="accordion">
                         <span>Gerbang Lawang Bata Merah (Candi Bentar)</span>
-                    </div>
+                    </button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Struktur gerbang luar tanpa perekat semen yang dijumpai di Keraton Kasepuhan mengadopsi gaya arsitektur candi pra-Islam dari kerajaan Majapahit. Keberadaan gapura ini menyimbolkan proses transisi spiritual sekaligus bentuk penghargaan para pendiri kesultanan terhadap keagungan budaya leluhur Nusantara terdahulu.</p>
@@ -593,23 +606,23 @@
                 </div>
 
                 <div class="accordion-item">
-                    <div class="accordion-header">
+                    <button class="accordion">
                         <span>Keramik Porselen Dinasti Ming</span>
-                    </div>
+                    </button>
                     <div class="panel">
                         <div class="panel-content">
-                            <p>Ratusan piring porselen kuno dari daratan Tiongkok yang tertempel indah menghiasi dinding keraton merupakan saksi bisu harmonisnya hubungan diplomatik and perdagangan laut internasional. Secara spiritual, porselen putih-biru ini melambangkan kesucian hati serta asimilasi damai antara kultur pesisir Jawa and Asia Timur.</p>
+                            <p>Ratusan piring porselen kuno dari daratan Tiongkok yang tertempel indah menghiasi dinding keraton merupakan saksi bisu harmonisnya hubungan diplomatik dan perdagangan laut internasional. Secara spiritual, porselen putih-biru ini melambangkan kesucian hati serta asimilasi damai antara kultur pesisir Jawa dan Asia Timur.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <div class="accordion-header">
+                    <button class="accordion">
                         <span>Ornamen Tiang Saka Guru & Pendopo</span>
-                    </div>
+                    </button>
                     <div class="panel">
                         <div class="panel-content">
-                            <p>Tiang-tiang kayu jati penyangga utama (saka guru) di dalam pendopo keraton tidak hanya berfungsi sebagai fondasi struktural, melainkan membawa makna filosofis Islam yang kokoh. Struktur ini melambangkan keteguhan iman and tiang agama, sementara ukiran motif Mega Mendung pada bagian atasnya mencerminkan kedamaian spiritual yang menaungi rakyat di bawahnya.</p>
+                            <p>Tiang-tiang kayu jati penyangga utama (saka guru) di dalam pendopo keraton tidak hanya berfungsi sebagai fondasi struktural, melainkan membawa makna filosofis Islam yang kokoh. Struktur ini melambangkan keteguhan iman dan tiang agama, sementara ukiran motif Mega Mendung pada bagian atasnya mencerminkan kedamaian spiritual yang menaungi rakyat di bawahnya.</p>
                         </div>
                     </div>
                 </div>
@@ -657,7 +670,7 @@
             <div class="kolom-footer">
                 <h4>About Me</h4>
                 <p class="teks-tentang">
-                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, and pesona magis dari Kota Cirebon ke kancah dunia.
+                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
                 </p>
                 <div class="sosmed-footer">
                     <a href="https://github.com/Vincent-palar" aria-label="Github"><i class="fa-brands fa-github"></i></a>
@@ -672,28 +685,17 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#btnToggleNav').click(function() {
-                $('#boxNavMenu').slideToggle(300);
-            });
+        const tombolAccordion = document.getElementsByClassName("accordion");
 
-            $('.accordion-header').click(function() {
-                var currentHeader = $(this);
-                var currentPanel = currentHeader.next('.panel');
+        for (let i = 0; i < tombolAccordion.length; i++) {
+            tombolAccordion[i].addEventListener("click", function() {
+                this.classList.toggle("aktif");
                 
-                $('.accordion-header').not(currentHeader).removeClass('aktif');
-                $('.panel').not(currentPanel).css('max-height', '0px');
-
-                currentHeader.toggleClass('aktif');
-                if (currentHeader.hasClass('aktif')) {
-                    currentPanel.css('max-height', currentPanel[0].scrollHeight + 'px');
-                } else {
-                    currentPanel.css('max-height', '0px');
-                }
+                const panel = this.nextElementSibling;
+                panel.classList.toggle("bukaPanel");
             });
-        });
+        }
     </script>
 
 </body>
