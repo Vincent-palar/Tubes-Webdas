@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Pesona Budaya Cirebon</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #e2d7ca;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .teks-emas {
+            color: #c5a059;
+        }
+
+        .pembatas-emas {
+            width: 100px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 20px auto;
+        }
+
+        .navbar-utama {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 17, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 15px 0;
+        }
+
+        .wadah-nav {
+            width: 100%;
+            padding: 0 5%; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: relative;
+        }
+
+        .link-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .ikon-logo {
+            color: #c5a059;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .teks-logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .list-navigasi {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-navigasi li {
+            margin: 0 12px; 
+        }
+
+        .list-navigasi .link-menu {
+            color: #e2d7ca;
+            text-decoration: none; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .list-navigasi .link-menu:hover, 
+        .list-navigasi .link-menu.aktif {
+            color: #c5a059;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+        }
+
+        .tombol-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #c5a059;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tombol-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .hero-header {
+            text-align: center;
+            padding: 150px 20px 60px 20px;
+            background: transparent;
+        }
+
+        .sub-judul-hero {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .judul-hero {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .deskripsi-hero {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2d7ca;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .wadah-konten {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 20px 80px 20px;
+        }
+
+        .kartu-tim-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .kartu-tim {
+            background-color: rgba(44, 30, 15, 0.75);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 16px;
+            width: 320px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kartu-tim:hover {
+            transform: translateY(-10px);
+            border-color: rgba(197, 160, 89, 0.6);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
+        }
+
+        .area-avatar {
+            padding: 35px 20px 20px 20px;
+            position: relative;
+        }
+
+        .bingkai-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 2px solid #c5a059;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background-color: #1a1105;
+        }
+
+        .bingkai-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-tim {
+            padding: 10px 25px 35px 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nama-tim {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .peran-tim {
+            font-size: 0.85rem;
+            color: #c5a059;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .garis-kartu {
+            width: 50px;
+            height: 1px;
+            background-color: rgba(197, 160, 89, 0.3);
+            margin: 0 auto 15px auto;
+        }
+
+        .nrp-tim {
+            font-size: 0.95rem;
+            color: rgba(226, 215, 202, 0.8);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .univ-tim {
+            font-size: 0.85rem;
+            color: rgba(226, 215, 202, 0.6);
+            line-height: 1.5;
+        }
+
+        .section-feedback {
+            max-width: 800px;
+            margin: 80px auto 0 auto;
+            padding: 0 20px;
+        }
+
+        .form-feedback {
+            background-color: rgba(44, 30, 15, 0.75);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+        }
+
+        .grup-input {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .grup-input label {
+            display: block;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .grup-input input, .grup-input textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background-color: rgba(26, 17, 5, 0.6);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 8px;
+            color: #e2d7ca;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grup-input input:focus, .grup-input textarea:focus {
+            border-color: #c5a059;
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .grup-input textarea {
+            resize: none;
+            min-height: 130px;
+        }
+
+        .tombol-emas {
+            background-color: transparent;
+            border: 2px solid #c5a059;
+            color: #c5a059;
+            padding: 14px 40px; 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.5s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tombol-emas:hover {
+            background-color: #c5a059;
+            color: #1a1105;
+            box-shadow: 0px 0px 20px #c5a059;
+        }
+
+        .daftar-feedback {
+            margin-top: 50px;
+        }
+
+        .kartu-feedback {
+            background-color: rgba(44, 30, 15, 0.5);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .kartu-feedback:hover {
+            border-color: rgba(197, 160, 89, 0.4);
+        }
+
+        .header-feedback {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .nama-feedback {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .tanggal-feedback {
+            font-size: 0.8rem;
+            color: rgba(226, 215, 202, 0.5);
+        }
+
+        .isi-feedback {
+            font-size: 0.95rem;
+            color: rgba(226, 215, 202, 0.9);
+            line-height: 1.8;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            background-color: rgba(18, 12, 4, 0.85);
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 70px 0 30px 0;
+            color: rgba(245,245,245,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .container-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .kolom-footer h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            border-left: 3px solid #c5a059; 
+            padding-left: 12px; 
+            line-height: 1.2; 
+        }
+
+        .kolom-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .kolom-footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .kolom-footer ul li a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .kolom-footer ul li a:hover {
+            color: #c5a059;
+            transform: translateX(5px);
+        }
+
+        .teks-tentang {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 15px;
+        }
+
+        .sosmed-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sosmed-footer a {
+            color: #c5a059;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .sosmed-footer a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .bawah-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 767px) {
+            body .tombol-toggle {
+                display: block;
+            }
+
+            .wrapper-menu {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+
+            .list-navigasi {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .list-navigasi li {
+                margin: 0; 
+            }
+
+            body .list-navigasi .link-menu {
+                font-size: 0.9rem;
+                padding: 10px 20px; 
+                width: 100%;
+                text-align: left; 
+            }
+            
+            .list-navigasi .link-menu:hover {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+
+            .judul-hero {
+                font-size: 2.2rem;
+            }
+
+            .kartu-tim-wrapper {
+                gap: 25px;
+            }
+
+            .section-feedback {
+                padding: 0;
+            }
+
+            .form-feedback {
+                padding: 25px;
+            }
+
+            .header-feedback {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            body .container-footer {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-utama">
+        <div class="wadah-nav">
+            <a class="link-logo" href="index.html">
+                <i class="fa-solid fa-gopuram ikon-logo"></i>
+                <span class="teks-logo">CIREBON</span>
+            </a>
+            
+            <button class="tombol-toggle" id="btnToggleNav" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="wrapper-menu" id="boxNavMenu">
+                <ul class="list-navigasi">
+                    <li><a class="link-menu" href="index.html">Home</a></li>
+                    <li><a class="link-menu" href="Sejarah.html">History</a></li>
+                    <li><a class="link-menu" href="Arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
+                    <li><a class="link-menu" href="Kuliner.html">Culinary</a></li>
+                    <li><a class="link-menu aktif" href="about.html">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <p class="sub-judul-hero">The Creators</p>
+        <h1 class="judul-hero">About <span class="teks-emas">Me</span></h1>
+        <div class="pembatas-emas"></div>
+        <p class="deskripsi-hero">
+            Di balik layar pengembangan platform pelestarian warisan tradisi, seni, dan sejarah kebudayaan Cirebon.
+        </p>
+    </header>
+
+    <main class="wadah-konten">
+        <div class="kartu-tim-wrapper">
+            
+            <div class="kartu-tim">
+                <div class="area-avatar">
+                    <div class="bingkai-avatar">
+                        <img src="avatar1.png" alt="Nico Profile" onerror="this.onerror=null; this.src='https://placehold.co/150x150/2c1e0f/c5a059?text=Nico'">
+                    </div>
+                </div>
+                <div class="detail-tim">
+                    <div>
+                        <h2 class="nama-tim">Nico</h2>
+                        <div class="garis-kartu"></div>
+                    </div>
+                    <div>
+                        <p class="nrp-tim">NRP: 2572021</p>
+                        <p class="univ-tim">Universitas Kristen Maranatha<br>Teknik Informatika</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kartu-tim">
+                <div class="area-avatar">
+                    <div class="bingkai-avatar">
+                        <img src="avatar2.png" alt="Vincent Profile" onerror="this.onerror=null; this.src='https://placehold.co/150x150/2c1e0f/c5a059?text=Vincent'">
+                    </div>
+                </div>
+                <div class="detail-tim">
+                    <div>
+                        <h2 class="nama-tim">Vincent</h2>
+                        <div class="garis-kartu"></div>
+                    </div>
+                    <div>
+                        <p class="nrp-tim">NRP: 2572022</p>
+                        <p class="univ-tim">Universitas Kristen Maranatha<br>Teknik Informatika</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="section-feedback">
+            <div class="judul-filosofi-seksi" style="text-align: center; margin-bottom: 40px;">
+                <p class="sub-judul-hero sub-judul-kecil">Hubungi Kami</p>
+                <h2>Kotak Masukan</h2>
+                <div class="pembatas-emas"></div>
+                <p class="deskripsi-dropdown" style="margin-bottom: 30px;">Berikan saran, masukan, atau kritik konstruktif Anda untuk pengembangan website ini.</p>
+            </div>
+
+            <form id="formFeedback" class="form-feedback">
+                <div class="grup-input">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda...">
+                </div>
+                <div class="grup-input">
+                    <label for="masukan">Masukan / Saran</label>
+                    <textarea id="masukan" name="masukan" required placeholder="Tuliskan masukan atau kritik Anda di sini..."></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="tombol-emas">Kirim Masukan</button>
+                </div>
+            </form>
+
+            <div class="daftar-feedback">
+                <h3 style="text-align: left; margin-bottom: 25px; border-left: 3px solid #c5a059; padding-left: 15px; line-height: 1.2;">Daftar Masukan Terbaru</h3>
+                <div id="containerFeedback"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <div class="kolom-footer">
+                <h4>History & Palace</h4>
+                <ul>
+                    <li><a href="Sejarah.html#caruban">Caruban Nagari</a></li>
+                    <li><a href="Sejarah.html#sunan">Sunan Gunung Jati</a></li>
+                    <li><a href="Arsitektur.html#kasepuhan">Kasepuhan Palace</a></li>
+                    <li><a href="Arsitektur.html#kanoman">Kanoman Palace</a></li>
+                    <li><a href="Arsitektur.html#kacirebonan">Kacirebonan Palace</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Arts & Music</h4>
+                <ul>
+                    <li><a href="seni.html#mask-dance">Mask Dance</a></li>
+                    <li><a href="seni.html#philosophical-move">Philosophical Move</a></li>
+                    <li><a href="musik.html#gamelan">Gamelan Renteng</a></li>
+                    <li><a href="musik.html#tarling">Tarling Coastal</a></li>
+                    <li><a href="musik.html#gending">Seni Gending</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Culinary</h4>
+                <ul>
+                    <li><a href="Kuliner.html#jamblang">Sega Jamblang</a></li>
+                    <li><a href="Kuliner.html#empal">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html#tjampolay">Tjampolay Syrup</a></li>
+                    <li><a href="Kuliner.html#docang">Docang Cirebon</a></li>
+                    <li><a href="Kuliner.html#gejrot">Tahu Gejrot</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>About Me</h4>
+                <p class="teks-tentang">
+                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
+                </p>
+                <div class="sosmed-footer">
+                    <a href="https://github.com/Vincent-palar" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/eminslocinnahtanle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/nicolas-elnathan-382061383/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bawah-footer">
+            <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btnToggleNav').click(function() {
+                $('#boxNavMenu').slideToggle(300);
+            });
+
+            function loadFeedbacks() {
+                var stored = localStorage.getItem('cirebon_feedbacks');
+                var feedbacks = stored ? JSON.parse(stored) : [];
+                var container = $('#containerFeedback');
+                container.empty();
+
+                if (feedbacks.length === 0) {
+                    container.append('<p style="color: rgba(226, 215, 202, 0.5); text-align: center; font-style: italic; padding: 20px 0;">Belum ada masukan yang dikirimkan.</p>');
+                } else {
+                    feedbacks.reverse().forEach(function(item) {
+                        var card = $('<div>').addClass('kartu-feedback');
+                        var header = $('<div>').addClass('header-feedback')
+                            .append($('<span>').addClass('nama-feedback').text(item.nama))
+                            .append($('<span>').addClass('tanggal-feedback').text(item.tanggal));
+                        
+                        var content = $('<div>').addClass('isi-feedback').text(item.masukan);
+                        
+                        card.append(header).append(content);
+                        container.append(card);
+                    });
+                }
+            }
+
+            $('#formFeedback').submit(function(e) {
+                e.preventDefault();
+                var namaInput = $('#nama').val().trim();
+                var masukanInput = $('#masukan').val().trim();
+
+                if (namaInput !== '' && masukanInput !== '') {
+                    var stored = localStorage.getItem('cirebon_feedbacks');
+                    var feedbacks = stored ? JSON.parse(stored) : [];
+
+                    var now = new Date();
+                    var pad = function(num) { return (num < 10 ? '0' : '') + num; };
+                    var tanggalStr = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear() + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+
+                    feedbacks.push({
+                        nama: namaInput,
+                        masukan: masukanInput,
+                        tanggal: tanggalStr
+                    });
+
+                    localStorage.setItem('cirebon_feedbacks', JSON.stringify(feedbacks));
+                    
+                    $('#nama').val('');
+                    $('#masukan').val('');
+                    
+                    loadFeedbacks();
+                }
+            });
+
+            loadFeedbacks();
+        });
+    </script>
+
+</body>
+</html>
