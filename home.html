@@ -13,15 +13,6 @@
             scroll-behavior: smooth;
         }
 
-        :root 
-        {
-            --bg-gelap: #1a1105; 
-            --bg-kartu: #2c1e0f;
-            --emas-utama: #c5a059;
-            --emas-terang: #e5c17d;
-            --warna-teks: #e2d7ca;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -35,7 +26,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
-            color: var(--warna-teks);
+            color: #e2d7ca;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             padding-top: 0;
@@ -53,7 +44,7 @@
             width: calc(100% - 60px); 
             max-width: 1100px; 
             height: 2px; 
-            background-color: var(--emas-utama);
+            background-color: #c5a059;
             margin: 25px auto;
         }
 
@@ -90,7 +81,7 @@
 
         .ikon-logo 
         {
-            color: var(--emas-utama);
+            color: #c5a059;
             font-size: 1.5rem;
             margin-right: 10px;
         }
@@ -118,7 +109,7 @@
 
         .list-navigasi .link-menu 
         {
-            color: var(--warna-teks);
+            color: #e2d7ca;
             text-decoration: none; 
             font-size: 0.85rem;
             font-weight: 600;
@@ -131,7 +122,7 @@
         .list-navigasi .link-menu:hover, 
         .list-navigasi .link-menu.aktif 
         {
-            color: var(--emas-utama);
+            color: #c5a059;
             text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
         }
 
@@ -139,7 +130,7 @@
         {
             display: none;
             background: none;
-            border: 1px solid var(--emas-utama);
+            border: 1px solid #c5a059;
             padding: 8px 10px;
             cursor: pointer;
             border-radius: 4px;
@@ -150,7 +141,7 @@
             display: block;
             width: 22px;
             height: 2px;
-            background-color: var(--emas-utama);
+            background-color: #c5a059;
             margin: 4px 0;
             transition: 0.3s;
         }
@@ -186,7 +177,7 @@
         {
             font-size: 1.4rem; 
             letter-spacing: 4px; 
-            color: var(--emas-utama);
+            color: #c5a059;
             text-transform: uppercase;
             font-weight: 400;
             margin-bottom: 20px;
@@ -214,13 +205,13 @@
         .tombol-emas 
         {
             background-color: transparent;
-            border: 2px solid var(--emas-utama);
-            color: var(--emas-utama);
+            border: 2px solid #c5a059;
+            color: #c5a059;
             padding: 14px 40px; 
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             text-decoration: none;
             display: inline-block;
             font-size: 0.95rem;
@@ -228,99 +219,9 @@
 
         .tombol-emas:hover 
         {
-            background-color: var(--emas-utama);
-            color: var(--bg-gelap);
-            box-shadow: 0px 0px 20px var(--emas-utama);
-        }
-
-        @media (max-width: 767px) 
-        {
-            .tombol-toggle 
-            {
-                display: block !important;
-            }
-
-            .wrapper-menu 
-            {
-                display: none; 
-                position: absolute;
-                top: 55px; 
-                right: 5%; 
-                left: auto; 
-                width: 220px; 
-                background-color: rgba(35, 23, 8, 0.98); 
-                border: 1px solid rgba(197, 160, 89, 0.4);
-                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-                padding: 15px 0;
-                border-radius: 6px;
-            }
-
-            .wrapper-menu.aktif 
-            {
-                display: block;
-            }
-
-            .list-navigasi 
-            {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .list-navigasi li 
-            {
-                margin: 0; 
-            }
-
-            .list-navigasi .link-menu 
-            {
-                font-size: 0.9rem;
-                padding: 10px 20px !important; 
-                width: 100%;
-                text-align: left; 
-            }
-            
-            .list-navigasi .link-menu:hover 
-            {
-                background-color: rgba(197, 160, 89, 0.1);
-            }
-
-            .judul-utama 
-            { 
-                font-size: 2.2rem; 
-                letter-spacing: 1px; 
-                line-height: 1.3; 
-            }
-            
-            .sub-judul 
-            { 
-                font-size: 0.95rem; 
-                letter-spacing: 2px; 
-            }
-            
-            .deskripsi-hero 
-            { 
-                font-size: 0.9rem; 
-                margin-bottom: 25px; 
-                line-height: 1.7; 
-            }
-            
-            .tombol-emas 
-            { 
-                padding: 10px 25px; 
-                font-size: 0.85rem; 
-            }
-            
-            .section-spotlight 
-            { 
-                padding: 50px 0; 
-            }
-            
-            .container-footer 
-            {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
-                text-align: left;
-            }
+            background-color: #c5a059;
+            color: #1a1105;
+            box-shadow: 0px 0px 20px #c5a059;
         }
 
         .section-spotlight 
@@ -363,23 +264,21 @@
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            transition: all 0.4s ease;
+            transition: background-color 0.5s ease, border-color 0.5s ease;
             backdrop-filter: blur(5px);
             text-decoration: none;
         }
 
         .kartu-budaya:hover 
         {
-            transform: translateY(-10px);
-            border-color: var(--emas-utama);
-            box-shadow: 0px 10px 25px rgba(197, 160, 89, 0.2);
-            background-color: rgba(44, 30, 15, 0.95);
+            border-color: #c5a059;
+            background-color: rgba(44, 30, 15, 0.98);
         }
 
         .kotak-ikon 
         {
             font-size: 2.5rem;
-            color: var(--emas-utama);
+            color: #c5a059;
             margin-bottom: 1.2rem;
             display: inline-flex;
             justify-content: center;
@@ -426,7 +325,7 @@
             letter-spacing: 1.5px;
             margin-bottom: 22px;
             text-transform: uppercase;
-            border-left: 3px solid var(--emas-utama); 
+            border-left: 3px solid #c5a059; 
             padding-left: 12px; 
             line-height: 1.2; 
         }
@@ -454,7 +353,7 @@
 
         .kolom-footer ul li a:hover 
         {
-            color: var(--emas-utama);
+            color: #c5a059;
             transform: translateX(5px);
         }
 
@@ -475,7 +374,7 @@
 
         .sosmed-footer a 
         {
-            color: var(--emas-utama);
+            color: #c5a059;
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
@@ -497,13 +396,103 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.3);
         }
+
+        @media (max-width: 767px) 
+        {
+            .tombol-toggle 
+            {
+                display: block ;
+            }
+
+            .wrapper-menu 
+            {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+
+            .wrapper-menu.aktif 
+            {
+                display: block;
+            }
+
+            .list-navigasi 
+            {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .list-navigasi li 
+            {
+                margin: 0; 
+            }
+
+            .list-navigasi .link-menu 
+            {
+                font-size: 0.9rem;
+                padding: 10px 20px ; 
+                width: 100%;
+                text-align: left; 
+            }
+            
+            .list-navigasi .link-menu:hover 
+            {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+
+            .judul-utama 
+            { 
+                font-size: 2.2rem; 
+                letter-spacing: 1px; 
+                line-height: 1.3; 
+            }
+            
+            .sub-judul 
+            { 
+                font-size: 0.95rem; 
+                letter-spacing: 2px; 
+            }
+            
+            .deskripsi-hero 
+            { 
+                font-size: 0.9rem; 
+                margin-bottom: 25px; 
+                line-height: 1.7; 
+            }
+            
+            .tombol-emas 
+            { 
+                padding: 10px 25px; 
+                font-size: 0.85rem; 
+            }
+            
+            .section-spotlight 
+            { 
+                padding: 50px 0; 
+            }
+            
+            .container-footer 
+            {
+                grid-template-columns: 1fr ;
+                gap: 30px ;
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar-utama">
         <div class="wadah-nav">
-            <a class="link-logo" href="index.html">
+            <a class="link-logo" href="home.html">
                 <i class="fa-solid fa-gopuram ikon-logo"></i>
                 <span class="teks-logo">CIREBON</span>
             </a>
@@ -516,12 +505,12 @@
             
             <div class="wrapper-menu" id="boxNavMenu">
                 <ul class="list-navigasi">
-                    <li><a class="link-menu aktif" href="index.html">Home</a></li>
+                    <li><a class="link-menu aktif" href="home.html">Home</a></li>
                     <li><a class="link-menu" href="Sejarah.html">History</a></li>
-                    <li><a class="link-menu" href="palace.html">Palace</a></li>
-                    <li><a class="link-menu" href="arts.html">Performing Arts</a></li>
-                    <li><a class="link-menu" href="music.html">Traditional Music</a></li>
-                    <li><a class="link-menu" href="culinary.html">Culinary</a></li>
+                    <li><a class="link-menu" href="Arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
+                    <li><a class="link-menu" href="Kuliner.html">Culinary</a></li>
                     <li><a class="link-menu" href="about.html">About Me</a></li>
                 </ul>
             </div>
@@ -531,7 +520,7 @@
     <header class="banner-hero">
         <div class="konten-hero">
             <p class="sub-judul">The Hidden Jewel of West Java</p>
-            <h1 class="judul-utama">CULTURAL CHARM<br><span style="color: var(--emas-utama);">CIREBON</span></h1>
+            <h1 class="judul-utama">CULTURAL CHARM<br><span style="color: #c5a059;">CIREBON</span></h1>
             <div class="garis-pembatas"></div>
             <p class="deskripsi-hero">Exploring the spiritual footprints, majestic palaces, harmonious arts, and timeless culinary delights of the Shrimp City.</p>
             <a href="#explore" class="tombol-emas">Explore Now</a>
@@ -549,22 +538,22 @@
                 <h3>History</h3>
                 <p class="teks-kartu">Uncovering the founding tales of Caruban Nagari and the strategic role of Sunan Gunung Jati.</p>
             </a>
-            <a href="palace.html" class="kartu-budaya">
+            <a href="Arsitektur.html" class="kartu-budaya">
                 <div class="kotak-ikon"><i class="fa-solid fa-fort-awesome"></i></div>
                 <h3>Palace</h3>
                 <p class="teks-kartu">The grandeur of Kasepuhan, Kanoman, Kacirebonan, and the uniqueness of red brick architecture.</p>
             </a>
-            <a href="arts.html" class="kartu-budaya">
+            <a href="seni.html" class="kartu-budaya">
                 <div class="kotak-ikon"><i class="fa-solid fa-masks-theater"></i></div>
                 <h3>Performing Arts</h3>
                 <p class="teks-kartu">The profound life philosophies embedded within the mystical movements of the Cirebon Mask Dance.</p>
             </a>
-            <a href="music.html" class="kartu-budaya">
+            <a href="musik.html" class="kartu-budaya">
                 <div class="kotak-ikon"><i class="fa-solid fa-music"></i></div>
                 <h3>Traditional Music</h3>
                 <p class="teks-kartu">From the sacred resonance of Gamelan Renteng to the distinct coastal melodies of Tarling.</p>
             </a>
-            <a href="culinary.html" class="kartu-budaya">
+            <a href="Kuliner.html" class="kartu-budaya">
                 <div class="kotak-ikon"><i class="fa-solid fa-utensils"></i></div>
                 <h3>Culinary</h3>
                 <p class="teks-kartu">Savoring the authentic taste of sega jamblang, savory empal gentong, and refreshing tjampolay syrup.</p>
@@ -579,31 +568,31 @@
                 <ul>
                     <li><a href="Sejarah.html">Caruban Nagari</a></li>
                     <li><a href="Sejarah.html">Sunan Gunung Jati</a></li>
-                    <li><a href="palace.html">Kasepuhan Palace</a></li>
-                    <li><a href="palace.html">Kanoman Palace</a></li>
-                    <li><a href="palace.html">Kacirebonan Palace</a></li>
+                    <li><a href="Arsitektur.html">Kasepuhan Palace</a></li>
+                    <li><a href="Arsitektur.html">Kanoman Palace</a></li>
+                    <li><a href="Arsitektur.html">Kacirebonan Palace</a></li>
                 </ul>
             </div>
             
             <div class="kolom-footer">
                 <h4>Arts & Music</h4>
                 <ul>
-                    <li><a href="arts.html">Mask Dance</a></li>
-                    <li><a href="arts.html">Philosophical Move</a></li>
-                    <li><a href="music.html">Gamelan Renteng</a></li>
-                    <li><a href="music.html">Tarling Coastal</a></li>
-                    <li><a href="music.html">Seni Gending</a></li>
+                    <li><a href="seni.html">Mask Dance</a></li>
+                    <li><a href="seni.html">Philosophical Move</a></li>
+                    <li><a href="musik.html">Gamelan Renteng</a></li>
+                    <li><a href="musik.html">Tarling Coastal</a></li>
+                    <li><a href="musik.html">Seni Gending</a></li>
                 </ul>
             </div>
             
             <div class="kolom-footer">
                 <h4>Culinary</h4>
                 <ul>
-                    <li><a href="culinary.html">Sega Jamblang</a></li>
-                    <li><a href="culinary.html">Empal Gentong</a></li>
-                    <li><a href="culinary.html">Tjampolay Syrup</a></li>
-                    <li><a href="culinary.html">Docang Cirebon</a></li>
-                    <li><a href="culinary.html">Tahu Gejrot</a></li>
+                    <li><a href="Kuliner.html">Sega Jamblang</a></li>
+                    <li><a href="Kuliner.html">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html">Tjampolay Syrup</a></li>
+                    <li><a href="Kuliner.html">Docang Cirebon</a></li>
+                    <li><a href="Kuliner.html">Tahu Gejrot</a></li>
                 </ul>
             </div>
             
