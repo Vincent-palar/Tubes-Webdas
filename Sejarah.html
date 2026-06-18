@@ -19,8 +19,7 @@
             box-sizing: border-box;
         }
 
-        body 
-        {
+        body {
             background-image: url('bg1.png');
             background-size: cover;
             background-repeat: no-repeat;
@@ -29,7 +28,7 @@
             color: #e2d7ca;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            padding-top: 0;
+            line-height: 1.8;
         }
 
         h1, h2, h3, h4 {
@@ -62,7 +61,6 @@
             align-items: center;
             justify-content: space-between; 
             position: relative;
-            outline: none;
         }
 
         .link-logo {
@@ -73,7 +71,7 @@
 
         .ikon-logo {
             color: #c5a059;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-right: 10px;
         }
 
@@ -84,8 +82,8 @@
             color: #ffffff;
         }
 
-        .wrapper-menu {
-            display: flex;
+        .toggle-nav-input {
+            display: none;
         }
 
         .list-navigasi {
@@ -99,7 +97,7 @@
             margin: 0 12px; 
         }
 
-        .list-navigasi .link-menu {
+        .link-menu {
             color: #e2d7ca;
             text-decoration: none; 
             font-size: 0.85rem;
@@ -110,24 +108,23 @@
             display: inline-block;
         }
 
-        .list-navigasi .link-menu:hover,
-        .list-navigasi .link-menu.aktif {
+        .link-menu:hover {
             color: #c5a059;
             text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
         }
 
-        .toggle-nav-input {
-            display: none;
+        .aktif-nav {
+            color: #c5a059;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
         }
 
         .tombol-toggle {
-            display: none;
             background: none;
             border: 1px solid #c5a059;
             padding: 8px 10px;
             cursor: pointer;
             border-radius: 4px;
-            outline: none;
+            display: none;
         }
 
         .tombol-toggle span {
@@ -152,10 +149,6 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             margin-bottom: 10px;
-        }
-
-        .sub-judul-kecil {
-            font-size: 0.8rem;
         }
 
         .judul-hero {
@@ -240,12 +233,10 @@
         }
 
         .garis-sub {
-            position: relative;
-            width: 350px; 
+            width: 60px;
             height: 2px;
-            background: linear-gradient(to right, #c5a059 0%, rgba(197, 160, 89, 0.6) 40%, rgba(197, 160, 89, 0) 100%);
+            background-color: #c5a059;
             margin-bottom: 25px;
-            border-radius: 2px;
         }
 
         .paragraf-sejarah {
@@ -260,10 +251,6 @@
             color: #e5c17d;
         }
 
-        .jarak-atas {
-            margin-top: 10px;
-        }
-
         .bagian-dropdown {
             margin: 80px 0 40px 0;
         }
@@ -271,6 +258,10 @@
         .judul-dropdown-seksi {
             text-align: center;
             margin-bottom: 40px;
+        }
+
+        .sub-judul-hero.sub-judul-kecil {
+            font-size: 0.8rem;
         }
 
         .deskripsi-dropdown {
@@ -283,71 +274,72 @@
             margin: 0 auto;
         }
 
-        .accordion-toggle {
-            display: none;
-        }
-
-        .accordion-item {
+        .accordion {
             background-color: rgba(44, 30, 15, 0.85);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            border-radius: 8px;
-            margin-top: 15px;
-            overflow: hidden;
-        }
-
-        .accordion-header {
             color: #ffffff;
             cursor: pointer;
             padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            outline: none;
+            transition: 0.4s;
             font-family: 'Cinzel', serif;
             font-weight: 600;
             font-size: 1.05rem;
+            border-radius: 8px;
+            margin-top: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             user-select: none;
-            outline: none;
-            transition: all 0.3s ease;
         }
 
-        .accordion-header::after {
+        .accordion::after {
             content: '▼';
             color: #c5a059;
             font-size: 0.8rem;
-            transition: transform 0.4s ease;
+            transition: transform 0.3s ease;
         }
 
-        .accordion-toggle:checked + .accordion-header::after {
-            transform: rotate(180deg);
-        }
-
-        .accordion-toggle:checked + .accordion-header {
+        .accordion:hover {
             background-color: rgba(26, 17, 5, 0.95);
             color: #e5c17d;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            border-color: rgba(197, 160, 89, 0.5);
+        }
+
+        .aktif {
+            background-color: rgba(26, 17, 5, 0.95);
+            color: #e5c17d;
+            border-color: rgba(197, 160, 89, 0.5);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .aktif::after {
+            transform: rotate(180deg);
         }
 
         .panel {
             background-color: rgba(26, 17, 5, 0.3);
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.3s ease-out;
-        }
-
-        .accordion-toggle:checked ~ .panel {
-            grid-template-rows: 1fr;
-        }
-
-        .panel-content {
-            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            border-left: 1px solid rgba(197, 160, 89, 0.1);
+            border-right: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
             color: #e2d7ca;
             font-size: 0.95rem;
             line-height: 1.8;
-            overflow: hidden;
-            transition: padding 0.3s ease-out;
         }
 
-        .accordion-toggle:checked ~ .panel > .panel-content {
+        .bukaPanel {
+            max-height: 500px;
+        }
+
+        .panel-content {
             padding: 25px;
         }
 
@@ -363,7 +355,7 @@
         }
 
         .daftar-silsilah li::before {
-            content: '\2605';
+            content: '✦';
             color: #c5a059;
             position: absolute;
             left: -15px;
@@ -476,7 +468,7 @@
             }
 
             .toggle-nav-input:checked ~ .wrapper-menu {
-                display: block !important;
+                display: block;
             }
 
             .list-navigasi {
@@ -488,14 +480,14 @@
                 margin: 0; 
             }
 
-            .list-navigasi .link-menu {
+            .link-menu {
                 font-size: 0.9rem;
                 padding: 10px 20px; 
                 width: 100%;
                 text-align: left; 
             }
             
-            .list-navigasi .link-menu:hover {
+            .link-menu:hover {
                 background-color: rgba(197, 160, 89, 0.1);
             }
 
@@ -503,23 +495,14 @@
                 font-size: 2.2rem;
             }
 
-            .baris-sejarah {
-                flex-direction: column;
-                gap: 30px;
-                margin-bottom: 60px;
-            }
-
+            .baris-sejarah, 
             .baris-sejarah.arah-terbalik {
                 flex-direction: column;
                 gap: 30px;
                 margin-bottom: 60px;
             }
 
-            .area-foto {
-                width: 100%;
-            }
-
-            .area-teks {
+            .area-foto, .area-teks {
                 width: 100%;
             }
 
@@ -534,23 +517,23 @@
 <body>
 
     <nav class="navbar-utama">
-        <div class="wadah-nav" tabindex="0">
+        <div class="wadah-nav">
             <a class="link-logo" href="index.html">
-                <i class="fa-solid fa-gopuram ikon-logo"></i>
+                <span class="ikon-logo"><i class="fa-solid fa-gopuram"></i></span>
                 <span class="teks-logo">CIREBON</span>
             </a>
             
-            <input type="checkbox" id="hamburger" class="toggle-nav-input">
-            <label class="tombol-toggle" for="hamburger" aria-label="Open Menu">
+            <input type="checkbox" id="btnToggleNav" class="toggle-nav-input">
+            <label class="tombol-toggle" for="btnToggleNav" aria-label="Open Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </label>
             
-            <div class="wrapper-menu" id="navMenu">
+            <div class="wrapper-menu" id="boxNavMenu">
                 <ul class="list-navigasi">
                     <li><a class="link-menu" href="index.html">Home</a></li>
-                    <li><a class="link-menu aktif" href="Sejarah.html">History</a></li>
+                    <li><a class="link-menu aktif-nav" href="Sejarah.html">History</a></li>
                     <li><a class="link-menu" href="Arsitektur.html">Palace</a></li>
                     <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
                     <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
@@ -562,7 +545,7 @@
     </nav>
 
     <header class="hero-header">
-        <p class="sub-judul-hero">The Chronicles of The Jewel of Java</p>
+        <p class="sub-judul-hero">The Chronicles of Pearl of Java</p>
         <h1 class="judul-hero">Sejarah & <span class="teks-emas">Asal-Usul</span></h1>
         <div class="pembatas-emas"></div>
         <p class="deskripsi-hero">
@@ -575,7 +558,7 @@
         <section class="baris-sejarah" id="caruban">
             <div class="area-foto">
                 <div class="bingkai-foto">
-                    <img src="caruban.png" onerror="this.onerror=null; this.src='https://placehold.co/600x450/1a1105/c5a059?text=Caruban+Nagari';" alt="Caruban Nagari">
+                    <img src="caruban.png" alt="Caruban Nagari">
                 </div>
             </div>
             <div class="area-teks">
@@ -596,7 +579,7 @@
         <section class="baris-sejarah arah-terbalik" id="cai-rebon">
             <div class="area-foto">
                 <div class="bingkai-foto">
-                    <img src="cairebon.png" onerror="this.onerror=null; this.src='https://placehold.co/600x450/1a1105/c5a059?text=Cai+Rebon';" alt="Cai Rebon">
+                    <img src="cairebon.png" alt="Cai Rebon">
                 </div>
             </div>
             <div class="area-teks">
@@ -617,7 +600,7 @@
         <section class="baris-sejarah" id="sunan">
             <div class="area-foto">
                 <div class="bingkai-foto">
-                    <img src="sunangunungjati.png" onerror="this.onerror=null; this.src='https://placehold.co/600x450/1a1105/c5a059?text=Sunan+Gunung+Jati';" alt="Sunan Gunung Jati">
+                    <img src="sunangunungjati.png" alt="Sunan Gunung Jati">
                 </div>
             </div>
             <div class="area-teks">
@@ -643,16 +626,13 @@
                 <p class="sub-judul-hero sub-judul-kecil">Informasi Khusus</p>
                 <h2>Eksplorasi Detail Peninggalan & Silsilah</h2>
                 <div class="pembatas-emas"></div>
-                <p class="deskripsi-dropdown">Klik pada panel di bawah untuk membuka informasi sejarah lebih mendalam.</p>
+                <p class="deskripsi-dropdown">Klik pada tombol di bawah untuk membuka informasi sejarah lebih mendalam.</p>
             </div>
 
             <div class="wadah-accordion">
                 
                 <div class="accordion-item">
-                    <input type="checkbox" id="acc-silsilah" class="accordion-toggle">
-                    <label class="accordion-header" for="acc-silsilah">
-                        <span>Silsilah Mulia Sunan Gunung Jati</span>
-                    </label>
+                    <button class="accordion">Silsilah Mulia Sunan Gunung Jati</button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Sunan Gunung Jati (Syarif Hidayatullah) memiliki silsilah luhur yang menyatukan trah bangsawan Timur Tengah dengan dinasti agung tanah Sunda Pajajaran:</p>
@@ -666,13 +646,10 @@
                 </div>
 
                 <div class="accordion-item">
-                    <input type="checkbox" id="acc-kereta" class="accordion-toggle">
-                    <label class="accordion-header" for="acc-kereta">
-                        <span>Kereta Pusaka Singa Barong & Paksi Naga Liman</span>
-                    </label>
+                    <button class="accordion">Kereta Pusaka Singa Barong & Paksi Naga Liman</button>
                     <div class="panel">
                         <div class="panel-content">
-                            <p>Di dalam kompleks Keraton Kasepuhan dan Kanoman tersimpan kereta kencana pusaka yang memiliki nilai seni, teknologi, dan filosofi spiritual yang teramat tinggi:</p>
+                            <p>Di dalam kompleks Keraton Kasepuhan and Kanoman tersimpan kereta kencana pusaka yang memiliki nilai seni, teknologi, dan filosofi spiritual yang teramat tinggi:</p>
                             <ul class="daftar-silsilah">
                                 <li><span class="teks-highlight">Kereta Paksi Naga Liman:</span> Kereta pusaka Keraton Kanoman yang berwujud makhluk gabungan bersayap burung (Paksi), bertubuh ular naga (Naga), dan belalai gajah (Liman). Simbol persatuan damai budaya Islam, Tionghoa, dan Hindu.</li>
                                 <li><span class="teks-highlight">Kereta Singa Barong:</span> Kereta kencana maha karya seni pahat dari tahun 1649 M yang memiliki sistem suspensi roda sangat canggih pada zamannya.</li>
@@ -682,14 +659,11 @@
                 </div>
 
                 <div class="accordion-item">
-                    <input type="checkbox" id="acc-masjid" class="accordion-toggle">
-                    <label class="accordion-header" for="acc-masjid">
-                        <span>Masjid Agung Sang Cipta Rasa</span>
-                    </label>
+                    <button class="accordion">Masjid Agung Sang Cipta Rasa</button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Didirikan pada tahun 1480 Masehi, masjid ini adalah salah satu masjid tertua di Nusantara yang merupakan hasil kolaborasi agung antara para Wali Songo:</p>
-                            <p class="jarak-atas">
+                            <p>
                                 Arsitektur masjid ini dirancang langsung oleh Sunan Kalijaga dengan mendatangkan ratusan tukang kayu terampil dari Majapahit. Salah satu keunikan mistis yang paling terkenal adalah tiang <span class="teks-highlight">"Saka Tatal"</span>, tiang penyangga utama masjid yang dibuat secara ajaib oleh Sunan Kalijaga dari tumpukan potongan-potongan sisa kayu (tatal) yang diikat erat menjadi satu tiang pancang yang kokoh.
                             </p>
                         </div>
@@ -697,15 +671,12 @@
                 </div>
 
                 <div class="accordion-item">
-                    <input type="checkbox" id="acc-perkawinan" class="accordion-toggle">
-                    <label class="accordion-header" for="acc-perkawinan">
-                        <span>Jejak Perkawinan Multikultural & Pengaruh Tionghoa</span>
-                    </label>
+                    <button class="accordion">Jejak Perkawinan Multikultural & Pengaruh Tionghoa</button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Salah satu bukti indahnya asimilasi budaya di Cirebon adalah pernikahan Sunan Gunung Jati dengan <span class="teks-highlight">Putri Ong Tien Nio</span> (anak dari Kaisar Dinasti Ming, Tiongkok) pada tahun 1481 Masehi.</p>
-                            <p class="jarak-atas">
-                                Pernikahan suci ini melahirkan akulturasi budaya Tionghoa yang sangat kental pada ragam ukiran keraton Cirebon. Ribuan piring porselen kuno asli Tiongkok dari masa itu hingga kini tertempel rapi menghiasi dinding-dinding bagian dalam Keraton Kasepuhan dan makam Sunan Gunung Jati sebagai bukti abadi persahabatan kedua bangsa.
+                            <p>
+                                Pernikahan suci ini melahirkan akulturasi budaya Tionghoa yang sangat kental pada ragam ukiran keraton Cirebon. Ribuan piring porselen kuno asli Tiongkok dari masa itu hingga kini tertempel rapi menghiasi dinding-dinding bagian dalam Keraton Kasepuhan and makam Sunan Gunung Jati sebagai bukti abadi persahabatan kedua bangsa.
                             </p>
                         </div>
                     </div>
@@ -732,11 +703,11 @@
             <div class="kolom-footer">
                 <h4>Arts & Music</h4>
                 <ul>
-                    <li><a href="seni.html#mask-dance">Mask Dance</a></li>
-                    <li><a href="seni.html#philosophical-move">Philosophical Move</a></li>
-                    <li><a href="musik.html#gamelan">Gamelan Renteng</a></li>
-                    <li><a href="musik.html#tarling">Tarling Coastal</a></li>
-                    <li><a href="musik.html#gending">Seni Gending</a></li>
+                    <li><a href="seni.html">Mask Dance</a></li>
+                    <li><a href="seni.html">Philosophical Move</a></li>
+                    <li><a href="musik.html">Gamelan Renteng</a></li>
+                    <li><a href="musik.html">Tarling Coastal</a></li>
+                    <li><a href="musik.html">Seni Gending</a></li>
                 </ul>
             </div>
             
@@ -744,7 +715,7 @@
                 <h4>Culinary</h4>
                 <ul>
                     <li><a href="Kuliner.html#jamblang">Sega Jamblang</a></li>
-                    <li><a href="Kuliner.html#empal">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html#gentong">Empal Gentong</a></li>
                     <li><a href="Kuliner.html#tjampolay">Tjampolay Syrup</a></li>
                     <li><a href="Kuliner.html#docang">Docang Cirebon</a></li>
                     <li><a href="Kuliner.html#gejrot">Tahu Gejrot</a></li>
@@ -757,9 +728,9 @@
                     Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
                 </p>
                 <div class="sosmed-footer">
-                    <a href="https://github.com/Vincent-palar" aria-label="Github"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.instagram.com/eminslocinnahtanle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/nicolas-elnathan-382061383/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Vincent-palar/Tubes-Webdas" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -768,6 +739,19 @@
             <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
         </div>
     </footer>
+
+    <script>
+        const tombolAccordion = document.getElementsByClassName("accordion");
+
+        for (let i = 0; i < tombolAccordion.length; i++) {
+            tombolAccordion[i].addEventListener("click", function() {
+                this.classList.toggle("aktif");
+                
+                const panel = this.nextElementSibling;
+                panel.classList.toggle("bukaPanel");
+            });
+        }
+    </script>
 
 </body>
 </html>
