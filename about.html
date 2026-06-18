@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -314,7 +314,7 @@
         }
 
         .grup-input textarea {
-            resize: none;
+            resize: vertical;
             min-height: 130px;
         }
 
@@ -568,7 +568,7 @@
                     <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
                     <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
                     <li><a class="link-menu" href="Kuliner.html">Culinary</a></li>
-                    <li><a class="link-menu aktif" href="about.html">About Me</a></li>
+                    <li><a class="link-menu aktif" href="about.php">About Me</a></li>
                 </ul>
             </div>
         </div>
@@ -603,7 +603,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="kartu-tim">
                 <div class="area-avatar">
                     <div class="bingkai-avatar">
@@ -635,11 +634,11 @@
             <form id="formFeedback" class="form-feedback">
                 <div class="grup-input">
                     <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda...">
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda...">
                 </div>
                 <div class="grup-input">
                     <label for="masukan">Masukan / Saran</label>
-                    <textarea id="masukan" name="masukan" required placeholder="Tuliskan masukan atau kritik Anda di sini..."></textarea>
+                    <textarea id="masukan" name="masukan" placeholder="Tuliskan masukan atau kritik Anda di sini..."></textarea>
                 </div>
                 <div style="text-align: center;">
                     <button type="submit" class="tombol-emas">Kirim Masukan</button>
@@ -741,27 +740,31 @@
                 var namaInput = $('#nama').val().trim();
                 var masukanInput = $('#masukan').val().trim();
 
-                if (namaInput !== '' && masukanInput !== '') {
-                    var stored = localStorage.getItem('cirebon_feedbacks');
-                    var feedbacks = stored ? JSON.parse(stored) : [];
-
-                    var now = new Date();
-                    var pad = function(num) { return (num < 10 ? '0' : '') + num; };
-                    var tanggalStr = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear() + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
-
-                    feedbacks.push({
-                        nama: namaInput,
-                        masukan: masukanInput,
-                        tanggal: tanggalStr
-                    });
-
-                    localStorage.setItem('cirebon_feedbacks', JSON.stringify(feedbacks));
-                    
-                    $('#nama').val('');
-                    $('#masukan').val('');
-                    
-                    loadFeedbacks();
+                if (namaInput === '' || masukanInput === '') {
+                    alert('Harap isi Nama Lengkap dan Masukan / Saran Anda terlebih dahulu sebelum mengirim.');
+                    return;
                 }
+
+                var stored = localStorage.getItem('cirebon_feedbacks');
+                var feedbacks = stored ? JSON.parse(stored) : [];
+
+                var now = new Date();
+                var pad = function(num) { return (num < 10 ? '0' : '') + num; };
+                var tanggalStr = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear() + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+
+                feedbacks.push({
+                    nama: namaInput,
+                    masukan: masukanInput,
+                    tanggal: tanggalStr
+                });
+
+                localStorage.setItem('cirebon_feedbacks', JSON.stringify(feedbacks));
+                
+                $('#nama').val('');
+                $('#masukan').val('');
+                
+                loadFeedbacks();
+                alert('Terima kasih atas kontribusi Anda! Masukan Anda telah berhasil kami simpan.');
             });
 
             loadFeedbacks();
