@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Pertunjukan - Pesona Budaya Cirebon</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #e2d7ca;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .teks-emas {
+            color: #c5a059;
+        }
+
+        .sub-judul-kecil {
+            font-size: 0.8rem;
+        }
+
+        .pembatas-emas {
+            width: 100px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 20px auto;
+        }
+
+        .navbar-utama {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 17, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 15px 0;
+        }
+
+        .wadah-nav {
+            width: 100%;
+            padding: 0 5%; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: relative;
+        }
+
+        .link-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .ikon-logo {
+            color: #c5a059;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .teks-logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .toggle-nav-input {
+            display: none;
+        }
+
+        .list-navigasi {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-navigasi li {
+            margin: 0 12px; 
+        }
+
+        .list-navigasi .link-menu {
+            color: #e2d7ca;
+            text-decoration: none; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .list-navigasi .link-menu:hover, 
+        .list-navigasi .link-menu.aktif {
+            color: #c5a059;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+        }
+
+        .tombol-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #c5a059;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tombol-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .hero-header {
+            text-align: center;
+            padding: 150px 20px 60px 20px;
+            background: transparent;
+        }
+
+        .sub-judul-hero {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .judul-hero {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .deskripsi-hero {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2d7ca;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .wadah-konten {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .baris-seni {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .baris-seni.arah-terbalik {
+            flex-direction: row-reverse;
+        }
+
+        .area-foto {
+            flex: 1;
+        }
+
+        .bingkai-foto {
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            aspect-ratio: 4/3;
+            background-color: #1a1105;
+        }
+
+        .bingkai-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .bingkai-foto:hover img {
+            transform: scale(1.08);
+        }
+
+        .area-teks {
+            flex: 1.2;
+        }
+
+        .judul-sesi {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .nomor-sesi {
+            color: #c5a059;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .garis-sub {
+            width: 60px;
+            height: 2px;
+            background-color: #c5a059;
+            margin-bottom: 25px;
+        }
+
+        .paragraf-seni {
+            text-align: justify;
+            text-indent: 40px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: rgba(226, 215, 202, 0.9);
+        }
+
+        .teks-highlight {
+            color: #e5c17d;
+            font-weight: 600;
+        }
+
+        .grid-pancawanda {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .kartu-topeng {
+            background-color: rgba(26, 17, 8, 0.45);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            border-radius: 10px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .kartu-topeng:hover {
+            border-color: #c5a059;
+            transform: translateY(-5px);
+            background-color: rgba(26, 17, 8, 0.75);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(197, 160, 89, 0.1);
+        }
+
+        .kartu-topeng:hover p {
+            color: rgba(226, 215, 202, 1);
+        }
+
+        .visual-kedok {
+            width: 120px;
+            height: 150px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .visual-kedok img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .kartu-topeng:hover .visual-kedok {
+            transform: scale(1.08);
+        }
+
+        .kartu-topeng h4 {
+            color: #e5c17d;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .kartu-topeng p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(226, 215, 202, 0.8);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tautan-kedok {
+            text-decoration: none;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 6, 2, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox-overlay:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-overlay:target .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border: 2px solid #c5a059;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
+            background-color: #1a1105;
+            padding: 15px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: zoom-out;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #c5a059;
+            font-size: 2.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .lightbox-close-btn:hover {
+            color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .kartu-topeng:nth-child(5) {
+                grid-column: span 2; 
+                max-width: 485px;
+                margin: 0 auto;
+            }
+        }
+
+        .bagian-dropdown {
+            margin: 80px 0 40px 0;
+        }
+
+        .judul-dropdown-seksi {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .deskripsi-dropdown {
+            font-size: 0.9rem;
+            color: rgba(226, 215, 202, 0.7);
+        }
+
+        .wadah-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion {
+            background: rgba(44, 30, 15, 0.85);
+            color: #ffffff;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            outline: none;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .accordion::after {
+            content: '▼';
+            color: #c5a059;
+            font-size: 0.8rem;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .accordion:hover {
+            background-color: rgba(26, 17, 5, 0.95);
+            color: #e5c17d;
+            border-color: rgba(197, 160, 89, 0.5);
+        }
+
+        .accordion-item.aktif .accordion {
+            background-color: rgba(26, 17, 5, 0.95);
+            color: #e5c17d;
+            border-color: rgba(197, 160, 89, 0.5);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .accordion-item.aktif .accordion::after {
+            transform: rotate(180deg);
+        }
+
+        .panel {
+            background-color: rgba(26, 17, 5, 0.3);
+            display: none; 
+            overflow: hidden;
+            border-left: 1px solid rgba(197, 160, 89, 0.1);
+            border-right: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #e2d7ca;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .panel-content {
+            padding: 25px;
+        }
+
+        footer {
+            background-color: rgba(18, 12, 4, 0.85);
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 70px 0 30px 0;
+            color: rgba(245,245,245,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .container-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .kolom-footer h4 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            border-left: 3px solid #c5a059; 
+            padding-left: 12px; 
+            line-height: 1.2; 
+        }
+
+        .kolom-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .kolom-footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .kolom-footer ul li a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .kolom-footer ul li a:hover {
+            color: #c5a059;
+            transform: translateX(5px);
+        }
+
+        .teks-tentang {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 15px;
+        }
+
+        .sosmed-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sosmed-footer a {
+            color: #c5a059;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .sosmed-footer a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .bawah-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 767px) {
+            .tombol-toggle {
+                display: block !important;
+            }
+
+            .wrapper-menu {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+
+            .toggle-nav-input:checked ~ .wrapper-menu {
+                display: block;
+            }
+
+            .list-navigasi {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .list-navigasi li {
+                margin: 0; 
+            }
+
+            .list-navigasi .link-menu {
+                font-size: 0.9rem;
+                padding: 10px 20px !important; 
+                width: 100%;
+                text-align: left; 
+            }
+            
+            .list-navigasi .link-menu:hover {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+
+            .judul-hero {
+                font-size: 2.2rem;
+            }
+
+            .baris-seni, 
+            .baris-seni.arah-terbalik {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .area-foto, .area-teks {
+                width: 100%;
+            }
+
+            .grid-pancawanda {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .container-footer {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-utama">
+        <div class="wadah-nav">
+            <a class="link-logo" href="index.html">
+                <i class="fa-solid fa-gopuram ikon-logo"></i>
+                <span class="teks-logo">CIREBON</span>
+            </a>
+            
+            <input type="checkbox" id="btnToggleNav" class="toggle-nav-input">
+            <label class="tombol-toggle" for="btnToggleNav" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
+            <div class="wrapper-menu" id="boxNavMenu">
+                <ul class="list-navigasi">
+                    <li><a class="link-menu" href="index.html">Home</a></li>
+                    <li><a class="link-menu" href="Sejarah.html">History</a></li>
+                    <li><a class="link-menu" href="Arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu aktif" href="seni.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
+                    <li><a class="link-menu" href="Kuliner.html">Culinary</a></li>
+                    <li><a class="link-menu" href="about.html">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <p class="sub-judul-hero">The Sacred Visual Arts</p>
+        <h1 class="judul-hero">Seni & <span class="teks-emas">Pertunjukan</span></h1>
+        <div class="pembatas-emas"></div>
+        <p class="deskripsi-hero">
+            Menelusuri pesona magis dari Tari Topeng Cirebon serta filosofi mendalam di balik ekspresi wajah dan simbolisme setiap gerakan.
+        </p>
+    </header>
+
+    <main class="wadah-konten">
+        
+        <section class="baris-seni" id="mask-dance">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="taritopeng.png" alt="Tari Topeng Cirebon" onerror="this.onerror=null; this.src='https://placehold.co/600x450/2c1e0f/c5a059?text=Tari+Topeng+Cirebon'">
+                </div>
+            </div>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">I.</span>
+                    <h2>Mask Dance</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-seni">
+                    Tari Topeng Cirebon adalah mahakarya seni tari klasik pesisir Jawa yang kaya akan mistisisme dan keindahan estetik. Seni pertunjukan ini diciptakan sebagai salah satu media penyebaran agama Islam yang taktis dan ramah oleh <span class="teks-highlight">Sunan Kalijaga</span> dan para Wali Songo lainnya pada abad ke-15.
+                </p>
+                <p class="paragraf-seni">
+                    Karakter penari topeng Cirebon dibagi ke dalam lima karakter utama yang dikenal dengan istilah <span class="teks-highlight">Panca Wanda</span> (Lima Rupa). Kelima karakter ini menyimbolkan fase metamorfosis kehidupan spiritual manusia dari lahir hingga menuju akhir pencariannya di dunia.
+                </p>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 80px;">
+            <div class="grid-pancawanda">
+                
+                <div class="kartu-topeng">
+                    <a href="#large-panji" class="tautan-kedok" title="Klik untuk memperbesar">
+                        <div class="visual-kedok">
+                            <img src="panji.png" alt="Topeng Panji" onerror="this.onerror=null; this.src='https://placehold.co/120x150/2c1e08/c5a059?text=Panji.png'">
+                        </div>
+                    </a>
+                    <h4>1. Panji</h4>
+                    <p>Wajah putih suci, melambangkan kesucian bayi yang baru lahir, tenang, dan tanpa noda.</p>
+                </div>
+                
+                <div class="kartu-topeng">
+                    <a href="#large-samba" class="tautan-kedok" title="Klik untuk memperbesar">
+                        <div class="visual-kedok">
+                            <img src="samba.png" alt="Topeng Samba" onerror="this.onerror=null; this.src='https://placehold.co/120x150/2c1e08/c5a059?text=Samba.png'">
+                        </div>
+                    </a>
+                    <h4>2. Samba</h4>
+                    <p>Wajah ceria, melambangkan kelincahan masa anak-anak dan remaja yang penuh tawa.</p>
+                </div>
+                
+                <div class="kartu-topeng">
+                    <a href="#large-rumyang" class="tautan-kedok" title="Klik untuk memperbesar">
+                        <div class="visual-kedok">
+                            <img src="rumyang.png" alt="Topeng Rumyang" onerror="this.onerror=null; this.src='https://placehold.co/120x150/2c1e08/c5a059?text=Rumyang.png'">
+                        </div>
+                    </a>
+                    <h4>3. Rumyang</h4>
+                    <p>Wajah merah jambu, melambangkan pencarian jati diri manusia di fase dewasa awal.</p>
+                </div>
+                
+                <div class="kartu-topeng">
+                    <a href="#large-tumenggung" class="tautan-kedok" title="Klik untuk memperbesar">
+                        <div class="visual-kedok">
+                            <img src="tumenggung.png" alt="Topeng Tumenggung" onerror="this.onerror=null; this.src='https://placehold.co/120x150/2c1e08/c5a059?text=Tumenggung.png'">
+                        </div>
+                    </a>
+                    <h4>4. Tumenggung</h4>
+                    <p>Wajah berwibawa, melambangkan sosok pemimpin yang tegas, mapan, dan bijaksana.</p>
+                </div>
+                
+                <div class="kartu-topeng">
+                    <a href="#large-kelana" class="tautan-kedok" title="Klik untuk memperbesar">
+                        <div class="visual-kedok">
+                            <img src="kelana.png" alt="Topeng Kelana" onerror="this.onerror=null; this.src='https://placehold.co/120x150/2c1e08/c5a059?text=Kelana.png'">
+                        </div>
+                    </a>
+                    <h4>5. Kelana</h4>
+                    <p>Wajah merah menyala, melambangkan angkara murka dan nafsu duniawi manusia.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="bagian-dropdown" id="philosophical-move">
+            <div class="judul-dropdown-seksi">
+                <p class="sub-judul-hero sub-judul-kecil">Makna Di Balik Setiap Gerak</p>
+                <h2>Philosophical Move</h2>
+                <div class="pembatas-emas"></div>
+                <p class="deskripsi-dropdown">Klik pada panel di bawah untuk membuka rahasia filosofi gerak tari topeng Cirebon.</p>
+            </div>
+
+            <div class="wadah-accordion">
+                
+                <div class="accordion-item">
+                    <button class="accordion" type="button">
+                        <span>✦ Sembahan (Gerak Menghormat)</span>
+                    </button>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Gerakan merapatkan kedua telapak tangan di depan dada atau wajah melambangkan kerendahan hati manusia sebelum menghadap Sang Pencipta (Welas Asih). Gerakan ini juga merupakan simbol salam penghormatan yang tulus kepada alam semesta dan sesama makhluk hidup.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion" type="button">
+                        <span>✦ Adreg & Gedut (Keteguhan Langkah)</span>
+                    </button>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Gerakan menghentakkan kaki yang mantap ke tanah beriringan dengan keseimbangan lutut melambangkan keteguhan iman dan jiwa manusia dalam berpijak di bumi. Gerak ini mengajarkan agar kita tidak mudah goyah di dalam menghadapi terpaan ujian dan godaan hidup.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion" type="button">
+                        <span>✦ Nandak & Jangkung (Kebesaran Ruh)</span>
+                    </button>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Gerak meregangkan tangan lebar-lebar dengan tempo dinamis melambangkan kedamaian batin dan keterbukaan jiwa untuk menerima kebenaran. Gerakan ini menyiratkan pesan kebebasan spiritual yang tetap berada di dalam koridor hukum moral kemanusiaan.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <div class="kolom-footer">
+                <h4>History & Palace</h4>
+                <ul>
+                    <li><a href="Sejarah.html#caruban">Caruban Nagari</a></li>
+                    <li><a href="Sejarah.html#sunan">Sunan Gunung Jati</a></li>
+                    <li><a href="Arsitektur.html#kasepuhan">Kasepuhan Palace</a></li>
+                    <li><a href="Arsitektur.html#kanoman">Kanoman Palace</a></li>
+                    <li><a href="Arsitektur.html#kacirebonan">Kacirebonan Palace</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Arts & Music</h4>
+                <ul>
+                    <li><a href="seni.html#mask-dance">Mask Dance</a></li>
+                    <li><a href="seni.html#philosophical-move">Philosophical Move</a></li>
+                    <li><a href="musik.html#gamelan">Gamelan Renteng</a></li>
+                    <li><a href="musik.html#tarling">Tarling Coastal</a></li>
+                    <li><a href="musik.html#gending">Seni Gending</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>Culinary</h4>
+                <ul>
+                    <li><a href="Kuliner.html">Sega Jamblang</a></li>
+                    <li><a href="Kuliner.html">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html">Tjampolay Syrup</a></li>
+                    <li><a href="Kuliner.html">Docang Cirebon</a></li>
+                    <li><a href="Kuliner.html">Tahu Gejrot</a></li>
+                </ul>
+            </div>
+            
+            <div class="kolom-footer">
+                <h4>About Me</h4>
+                <p class="teks-tentang">
+                    Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
+                </p>
+                <div class="sosmed-footer">
+                    <a href="https://github.com" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bawah-footer">
+            <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
+        </div>
+    </footer>
+
+    <div id="large-panji" class="lightbox-overlay">
+        <a href="#mask-dance" class="lightbox-close" title="Klik di mana saja untuk menutup"></a>
+        <div class="lightbox-content">
+            <img src="panji.png" alt="Topeng Panji Ukuran Besar" onerror="this.onerror=null; this.src='https://placehold.co/400x500/2c1e08/c5a059?text=Panji.png'">
+            <a href="#mask-dance" class="lightbox-close-btn" title="Tutup">&times;</a>
+        </div>
+    </div>
+
+    <div id="large-samba" class="lightbox-overlay">
+        <a href="#mask-dance" class="lightbox-close" title="Klik di mana saja untuk menutup"></a>
+        <div class="lightbox-content">
+            <img src="samba.png" alt="Topeng Samba Ukuran Besar" onerror="this.onerror=null; this.src='https://placehold.co/400x500/2c1e08/c5a059?text=Samba.png'">
+            <a href="#mask-dance" class="lightbox-close-btn" title="Tutup">&times;</a>
+        </div>
+    </div>
+
+    <div id="large-rumyang" class="lightbox-overlay">
+        <a href="#mask-dance" class="lightbox-close" title="Klik di mana saja untuk menutup"></a>
+        <div class="lightbox-content">
+            <img src="rumyang.png" alt="Topeng Rumyang Ukuran Besar" onerror="this.onerror=null; this.src='https://placehold.co/400x500/2c1e08/c5a059?text=Rumyang.png'">
+            <a href="#mask-dance" class="lightbox-close-btn" title="Tutup">&times;</a>
+        </div>
+    </div>
+
+    <div id="large-tumenggung" class="lightbox-overlay">
+        <a href="#mask-dance" class="lightbox-close" title="Klik di mana saja untuk menutup"></a>
+        <div class="lightbox-content">
+            <img src="tumenggung.png" alt="Topeng Tumenggung Ukuran Besar" onerror="this.onerror=null; this.src='https://placehold.co/400x500/2c1e08/c5a059?text=Tumenggung.png'">
+            <a href="#mask-dance" class="lightbox-close-btn" title="Tutup">&times;</a>
+        </div>
+    </div>
+
+    <div id="large-kelana" class="lightbox-overlay">
+        <a href="#mask-dance" class="lightbox-close" title="Klik di mana saja untuk menutup"></a>
+        <div class="lightbox-content">
+            <img src="kelana.png" alt="Topeng Kelana Ukuran Besar" onerror="this.onerror=null; this.src='https://placehold.co/400x500/2c1e08/c5a059?text=Kelana.png'">
+            <a href="#mask-dance" class="lightbox-close-btn" title="Tutup">&times;</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion').click(function() {
+                const item = $(this).parent();
+                const panel = $(this).next();
+
+                if (item.hasClass('aktif')) {
+                    item.removeClass('aktif');
+                    panel.slideUp(400);
+                } else {
+                    $('.accordion-item').removeClass('aktif');
+                    $('.panel').slideUp(400);
+
+                    item.addClass('aktif');
+                    panel.slideDown(400);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -94,6 +94,12 @@
             color: #ffffff;
         }
 
+        /* Toggle input checkbox untuk menu mobile */
+        .toggle-nav-input 
+        {
+            display: none;
+        }
+
         .list-navigasi 
         {
             display: flex;
@@ -401,7 +407,7 @@
         {
             .tombol-toggle 
             {
-                display: block ;
+                display: block !important;
             }
 
             .wrapper-menu 
@@ -419,7 +425,8 @@
                 border-radius: 6px;
             }
 
-            .wrapper-menu.aktif 
+            /* Logika CSS murni untuk membuka menu */
+            .toggle-nav-input:checked ~ .wrapper-menu 
             {
                 display: block;
             }
@@ -438,7 +445,7 @@
             .list-navigasi .link-menu 
             {
                 font-size: 0.9rem;
-                padding: 10px 20px ; 
+                padding: 10px 20px !important; 
                 width: 100%;
                 text-align: left; 
             }
@@ -492,20 +499,21 @@
 
     <nav class="navbar-utama">
         <div class="wadah-nav">
-            <a class="link-logo" href="home.html">
+            <a class="link-logo" href="index.html">
                 <i class="fa-solid fa-gopuram ikon-logo"></i>
                 <span class="teks-logo">CIREBON</span>
             </a>
             
-            <button class="tombol-toggle" id="btnToggleNav" aria-label="Open Menu">
+            <input type="checkbox" id="btnToggleNav" class="toggle-nav-input">
+            <label class="tombol-toggle" for="btnToggleNav" aria-label="Open Menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </label>
             
             <div class="wrapper-menu" id="boxNavMenu">
                 <ul class="list-navigasi">
-                    <li><a class="link-menu aktif" href="home.html">Home</a></li>
+                    <li><a class="link-menu aktif" href="index.html">Home</a></li>
                     <li><a class="link-menu" href="Sejarah.html">History</a></li>
                     <li><a class="link-menu" href="Arsitektur.html">Palace</a></li>
                     <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
@@ -566,11 +574,11 @@
             <div class="kolom-footer">
                 <h4>History & Palace</h4>
                 <ul>
-                    <li><a href="Sejarah.html">Caruban Nagari</a></li>
-                    <li><a href="Sejarah.html">Sunan Gunung Jati</a></li>
-                    <li><a href="Arsitektur.html">Kasepuhan Palace</a></li>
-                    <li><a href="Arsitektur.html">Kanoman Palace</a></li>
-                    <li><a href="Arsitektur.html">Kacirebonan Palace</a></li>
+                    <li><a href="Sejarah.html#caruban">Caruban Nagari</a></li>
+                    <li><a href="Sejarah.html#sunan">Sunan Gunung Jati</a></li>
+                    <li><a href="Arsitektur.html#kasepuhan">Kasepuhan Palace</a></li>
+                    <li><a href="Arsitektur.html#kanoman">Kanoman Palace</a></li>
+                    <li><a href="Arsitektur.html#kacirebonan">Kacirebonan Palace</a></li>
                 </ul>
             </div>
             
@@ -614,20 +622,5 @@
         </div>
     </footer>
 
-    <script>
-        const btnToggleNav = document.getElementById('btnToggleNav');
-        const boxNavMenu = document.getElementById('boxNavMenu');
-
-        btnToggleNav.addEventListener('click', () => {
-            boxNavMenu.classList.toggle('aktif');
-        });
-
-        const listLinkMenu = document.querySelectorAll('.link-menu');
-        listLinkMenu.forEach(item => {
-            item.addEventListener('click', () => {
-                boxNavMenu.classList.remove('aktif');
-            });
-        });
-    </script>
 </body>
 </html>
