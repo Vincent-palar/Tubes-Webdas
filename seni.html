@@ -385,7 +385,7 @@
             margin-top: 15px;
             overflow: hidden;
         }
-        .accordion-header {
+        .accordion {
             color: #ffffff;
             cursor: pointer;
             padding: 20px;
@@ -397,27 +397,34 @@
             align-items: center;
             user-select: none;
             outline: none;
-            list-style: none;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
-        .accordion-header::-webkit-details-marker {
-            display: none;
-        }
-        .accordion-header::after {
+        .accordion::after {
             content: '▼';
             color: #c5a059;
             font-size: 0.8rem;
             transition: transform 0.4s ease;
         }
-        .accordion-item[open] .accordion-header::after {
+        .accordion.aktif::after {
             transform: rotate(180deg);
         }
-        .accordion-item[open] .accordion-header {
+        .accordion.aktif {
             background-color: rgba(26, 17, 5, 0.95);
             color: #e5c17d;
             border-bottom: 1px solid rgba(197, 160, 89, 0.3);
         }
         .panel {
             background-color: rgba(26, 17, 5, 0.3);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .bukaPanel {
+            max-height: 500px;
         }
         .panel-content {
             padding: 25px;
@@ -584,7 +591,7 @@
                 <span class="teks-logo">CIREBON</span>
             </a>
             
-            <button class="tombol-toggle" aria-label="Open Menu">
+            <button class="tombol-toggle" id="btnToggleNav" aria-label="Open Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -676,7 +683,7 @@
                         </div>
                     </a>
                     <h4>4. Tumenggung</h4>
-                    <p>Wajah berwibawa, melambangkan sosok pemimpin yang tegas, mapan, dan bijaksana.</p>
+                    <p>Wajah berwibawa, melambangkan sosok pemimpin yang tegas, mapan, and bijaksana.</p>
                 </div>
                 
                 <div class="kartu-topeng">
@@ -686,7 +693,7 @@
                         </div>
                     </a>
                     <h4>5. Kelana</h4>
-                    <p>Wajah merah menyala, melambangkan angkara murka dan nafsu duniawi manusia.</p>
+                    <p>Wajah merah menyala, melambangkan angkara murka and nafsu duniawi manusia.</p>
                 </div>
                 
             </div>
@@ -702,38 +709,32 @@
 
             <div class="wadah-accordion">
                 
-                <details class="accordion-item">
-                    <summary class="accordion-header">
-                        <span>Sembahan (Gerak Menghormat)</span>
-                    </summary>
+                <div class="accordion-item">
+                    <button class="accordion">Sembahan (Gerak Menghormat)</button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Gerakan merapatkan kedua telapak tangan di depan dada atau wajah melambangkan kerendahan hati manusia sebelum menghadap Sang Pencipta (Welas Asih). Gerakan ini juga merupakan simbol salam penghormatan yang tulus kepada alam semesta dan sesama makhluk hidup.</p>
                         </div>
                     </div>
-                </details>
+                </div>
 
-                <details class="accordion-item">
-                    <summary class="accordion-header">
-                        <span>Adreg & Gedut (Keteguhan Langkah)</span>
-                    </summary>
+                <div class="accordion-item">
+                    <button class="accordion">Adreg & Gedut (Keteguhan Langkah)</button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Gerakan menghentakkan kaki yang mantap ke tanah beriringan dengan keseimbangan lutut melambangkan keteguhan iman dan jiwa manusia dalam berpijak di bumi. Gerak ini mengajarkan agar kita tidak mudah goyah di dalam menghadapi terpaan ujian dan godaan hidup.</p>
                         </div>
                     </div>
-                </details>
+                </div>
 
-                <details class="accordion-item">
-                    <summary class="accordion-header">
-                        <span>Nandak & Jangkung (Kebesaran Ruh)</span>
-                    </summary>
+                <div class="accordion-item">
+                    <button class="accordion">Nandak & Jangkung (Kebesaran Ruh)</button>
                     <div class="panel">
                         <div class="panel-content">
                             <p>Gerak meregangkan tangan lebar-lebar dengan tempo dinamis melambangkan kedamaian batin dan keterbukaan jiwa untuk menerima kebenaran. Gerakan ini menyiratkan pesan kebebasan spiritual yang tetap berada di dalam koridor hukum moral kemanusiaan.</p>
                         </div>
                     </div>
-                </details>
+                </div>
 
             </div>
         </section>
@@ -832,6 +833,20 @@
             <a href="#mask-dance" class="lightbox-close-btn" title="Tutup">&times;</a>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion').click(function() {
+                $(this).toggleClass('aktif');
+                $(this).next('.panel').toggleClass('bukaPanel');
+            });
+
+            $('#btnToggleNav').click(function() {
+                $('#boxNavMenu').slideToggle(300);
+            });
+        });
+    </script>
 
 </body>
 </html>
