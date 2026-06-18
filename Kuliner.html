@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,7 +97,7 @@
             margin: 0 12px; 
         }
 
-        .list-navigasi .link-menu {
+        .link-menu {
             color: #e2d7ca;
             text-decoration: none; 
             font-size: 0.85rem;
@@ -108,8 +108,8 @@
             display: inline-block;
         }
 
-        .list-navigasi .link-menu:hover, 
-        .list-navigasi .link-menu.aktif {
+        .link-menu:hover, 
+        .link-menu.aktif {
             color: #c5a059;
             text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
         }
@@ -134,7 +134,7 @@
 
         .hero-header {
             text-align: center;
-            padding: 150px 20px 40px 20px;
+            padding: 150px 20px 60px 20px;
             background: transparent;
         }
 
@@ -172,11 +172,7 @@
         .wadah-konten {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        .input-filter {
-            display: none;
+            padding: 40px 20px;
         }
 
         .bar-navigasi-filter {
@@ -192,63 +188,66 @@
             border: 1px solid rgba(197, 160, 89, 0.3);
             color: #e2d7ca;
             padding: 10px 24px;
-            font-family: 'Cinzel', serif;
             font-size: 0.85rem;
+            font-family: 'Cinzel', serif;
             font-weight: 600;
             letter-spacing: 1px;
             border-radius: 30px;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             user-select: none;
+            outline: none;
         }
 
         .tombol-tab-filter:hover {
             border-color: #c5a059;
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
         }
 
-        #filter-semua:checked ~ .bar-navigasi-filter label[for="filter-semua"],
-        #filter-makanan:checked ~ .bar-navigasi-filter label[for="filter-makanan"],
-        #filter-camilan:checked ~ .bar-navigasi-filter label[for="filter-camilan"],
-        #filter-minuman:checked ~ .bar-navigasi-filter label[for="filter-minuman"] {
+        .tombol-tab-filter.aktif {
             background-color: #c5a059;
             color: #1a1105;
             border-color: #c5a059;
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
         }
 
         .grid-kuliner {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 80px;
         }
 
-        .kartu-kuliner {
-            background-color: rgba(26, 17, 5, 0.75);
+        .card {
+            background-color: rgba(30, 20, 10, 0.75);
             border: 1px solid rgba(197, 160, 89, 0.15);
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
             transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
 
-        .kartu-kuliner:hover {
+        .hideCard {
+            display: none;
+        }
+
+        .card:hover {
             transform: translateY(-8px);
             border-color: rgba(197, 160, 89, 0.5);
             box-shadow: 0 15px 35px rgba(197, 160, 89, 0.15);
         }
 
-        .bingkai-foto-kartu {
+        .bingkai-foto-card {
             width: 100%;
-            aspect-ratio: 4/3;
+            aspect-ratio: 16/10;
             overflow: hidden;
-            background-color: #120c04;
+            background-color: #1a1105;
             border-bottom: 1px solid rgba(197, 160, 89, 0.15);
         }
 
-        .bingkai-foto-kartu img {
+        .bingkai-foto-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -256,18 +255,22 @@
             transition: transform 0.6s ease;
         }
 
-        .kartu-kuliner:hover .bingkai-foto-kartu img {
+        .card:hover .bingkai-foto-card img {
             transform: scale(1.08);
         }
 
-        .konten-kartu {
+        .konten-card {
             padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .kategori-tag {
-            font-family: 'Cinzel', serif;
             font-size: 0.75rem;
+            font-family: 'Cinzel', serif;
             color: #c5a059;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 8px;
@@ -276,13 +279,13 @@
 
         .nama-kuliner {
             font-size: 1.4rem;
-            margin-bottom: 12px;
-            line-height: 1.3;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .paragraf-singkat {
-            font-size: 0.9rem;
-            color: rgba(226, 215, 202, 0.8);
+            font-size: 0.88rem;
+            color: rgba(226, 215, 202, 0.75);
             text-align: justify;
             margin-bottom: 20px;
             height: 100px;
@@ -291,35 +294,30 @@
 
         .daftar-spesifikasi {
             list-style: none;
-            padding-top: 15px;
+            padding: 0;
+            margin-top: auto;
             border-top: 1px solid rgba(197, 160, 89, 0.15);
+            padding-top: 15px;
         }
 
         .daftar-spesifikasi li {
             font-size: 0.85rem;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: flex;
-            align-items: flex-start;
-            color: rgba(226, 215, 202, 0.75);
+            align-items: center;
+            color: rgba(226, 215, 202, 0.85);
         }
 
         .ikon-spek {
             color: #c5a059;
-            margin-right: 10px;
-            font-size: 0.75rem;
-            margin-top: 2px;
+            margin-right: 12px;
+            font-size: 0.8rem;
         }
 
         .label-spek {
             color: #ffffff;
             font-weight: 600;
-            margin-right: 6px;
-        }
-
-        #filter-makanan:checked ~ .grid-kuliner .kartu-kuliner:not(.makanan-utama),
-        #filter-camilan:checked ~ .grid-kuliner .kartu-kuliner:not(.camilan-tradisional),
-        #filter-minuman:checked ~ .grid-kuliner .kartu-kuliner:not(.minuman-legendaris) {
-            display: none;
+            margin-right: 8px;
         }
 
         footer {
@@ -328,6 +326,7 @@
             padding: 70px 0 30px 0;
             color: rgba(245,245,245,0.6);
             backdrop-filter: blur(5px);
+            margin-top: 80px;
         }
 
         .container-footer {
@@ -442,24 +441,24 @@
                 margin: 0; 
             }
 
-            .list-navigasi .link-menu {
+            .link-menu {
                 font-size: 0.9rem;
                 padding: 10px 20px; 
                 width: 100%;
                 text-align: left; 
             }
             
-            .list-navigasi .link-menu:hover {
+            .link-menu:hover {
                 background-color: rgba(197, 160, 89, 0.1);
-            }
-
-            .grid-kuliner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
             }
 
             .judul-hero {
                 font-size: 2.2rem;
+            }
+
+            .grid-kuliner {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
 
             .container-footer {
@@ -468,19 +467,13 @@
                 text-align: left;
             }
         }
-
-        @media (max-width: 767px) {
-            .grid-kuliner {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
 
     <nav class="navbar-utama">
         <div class="wadah-nav">
-            <a class="link-logo" href="index.html">
+            <a class="link-logo" href="home.html">
                 <span class="ikon-logo"><i class="fa-solid fa-gopuram"></i></span>
                 <span class="teks-logo">CIREBON</span>
             </a>
@@ -494,12 +487,12 @@
             
             <div class="wrapper-menu" id="boxNavMenu">
                 <ul class="list-navigasi">
-                    <li><a class="link-menu" href="index.html">Home</a></li>
-                    <li><a class="link-menu" href="Sejarah.html">History</a></li>
-                    <li><a class="link-menu" href="Arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu" href="home.html">Home</a></li>
+                    <li><a class="link-menu" href="sejarah.html">History</a></li>
+                    <li><a class="link-menu" href="arsitektur.html">Palace</a></li>
                     <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
                     <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
-                    <li><a class="link-menu aktif" href="Kuliner.html">Culinary</a></li>
+                    <li><a class="link-menu aktif" href="kuliner.html">Culinary</a></li>
                     <li><a class="link-menu" href="about.html">About Me</a></li>
                 </ul>
             </div>
@@ -517,25 +510,20 @@
 
     <main class="wadah-konten">
 
-        <input type="radio" id="filter-semua" name="kategori-kuliner" class="input-filter" checked>
-        <input type="radio" id="filter-makanan" name="kategori-kuliner" class="input-filter">
-        <input type="radio" id="filter-camilan" name="kategori-kuliner" class="input-filter">
-        <input type="radio" id="filter-minuman" name="kategori-kuliner" class="input-filter">
-
         <div class="bar-navigasi-filter">
-            <label for="filter-semua" class="tombol-tab-filter">Semua Hidangan</label>
-            <label for="filter-makanan" class="tombol-tab-filter">Makanan Utama</label>
-            <label for="filter-camilan" class="tombol-tab-filter">Camilan Tradisional</label>
-            <label for="filter-minuman" class="tombol-tab-filter">Minuman Legendaris</label>
+            <button class="tombol-tab-filter aktif" id="tombol-semua">Semua Hidangan</button>
+            <button class="tombol-tab-filter" id="tombol-makanan">Makanan Utama</button>
+            <button class="tombol-tab-filter" id="tombol-camilan">Camilan Tradisional</button>
+            <button class="tombol-tab-filter" id="tombol-minuman">Minuman Legendaris</button>
         </div>
 
         <div class="grid-kuliner">
 
-            <div class="kartu-kuliner makanan-utama">
-                <div class="bingkai-foto-kartu">
+            <div class="card makanan-utama">
+                <div class="bingkai-foto-card">
                     <img src="jamblang.jpg" alt="Sega Jamblang">
                 </div>
-                <div class="konten-kartu">
+                <div class="konten-card">
                     <span class="kategori-tag">Makanan Utama</span>
                     <h2 class="nama-kuliner">Sega Jamblang</h2>
                     <p class="paragraf-singkat">
@@ -549,11 +537,11 @@
                 </div>
             </div>
 
-            <div class="kartu-kuliner makanan-utama">
-                <div class="bingkai-foto-kartu">
+            <div class="card makanan-utama">
+                <div class="bingkai-foto-card">
                     <img src="empal.jpg" alt="Empal Gentong">
                 </div>
-                <div class="konten-kartu">
+                <div class="konten-card">
                     <span class="kategori-tag">Makanan Utama</span>
                     <h2 class="nama-kuliner">Empal Gentong</h2>
                     <p class="paragraf-singkat">
@@ -567,11 +555,11 @@
                 </div>
             </div>
 
-            <div class="kartu-kuliner minuman-legendaris">
-                <div class="bingkai-foto-kartu">
+            <div class="card minuman-legendaris">
+                <div class="bingkai-foto-card">
                     <img src="tjampolay.jpg" alt="Tjampolay Syrup">
                 </div>
-                <div class="konten-kartu">
+                <div class="konten-card">
                     <span class="kategori-tag">Minuman Legendaris</span>
                     <h2 class="nama-kuliner">Tjampolay Syrup</h2>
                     <p class="paragraf-singkat">
@@ -585,11 +573,11 @@
                 </div>
             </div>
 
-            <div class="kartu-kuliner makanan-utama">
-                <div class="bingkai-foto-kartu">
+            <div class="card makanan-utama">
+                <div class="bingkai-foto-card">
                     <img src="docang.jpg" alt="Docang Cirebon">
                 </div>
-                <div class="konten-kartu">
+                <div class="konten-card">
                     <span class="kategori-tag">Makanan Utama</span>
                     <h2 class="nama-kuliner">Docang Cirebon</h2>
                     <p class="paragraf-singkat">
@@ -603,11 +591,11 @@
                 </div>
             </div>
 
-            <div class="kartu-kuliner camilan-tradisional">
-                <div class="bingkai-foto-kartu">
+            <div class="card camilan-tradisional">
+                <div class="bingkai-foto-card">
                     <img src="gejrot.jpg" alt="Tahu Gejrot">
                 </div>
-                <div class="konten-kartu">
+                <div class="konten-card">
                     <span class="kategori-tag">Camilan Tradisional</span>
                     <h2 class="nama-kuliner">Tahu Gejrot</h2>
                     <p class="paragraf-singkat">
@@ -630,11 +618,11 @@
             <div class="kolom-footer">
                 <h4>History & Palace</h4>
                 <ul>
-                    <li><a href="Sejarah.html">Caruban Nagari</a></li>
-                    <li><a href="Sejarah.html">Sunan Gunung Jati</a></li>
-                    <li><a href="Arsitektur.html">Kasepuhan Palace</a></li>
-                    <li><a href="Arsitektur.html">Kanoman Palace</a></li>
-                    <li><a href="Arsitektur.html">Kacirebonan Palace</a></li>
+                    <li><a href="sejarah.html">Caruban Nagari</a></li>
+                    <li><a href="sejarah.html">Sunan Gunung Jati</a></li>
+                    <li><a href="arsitektur.html">Kasepuhan Palace</a></li>
+                    <li><a href="arsitektur.html">Kanoman Palace</a></li>
+                    <li><a href="arsitektur.html">Kacirebonan Palace</a></li>
                 </ul>
             </div>
             
@@ -652,11 +640,11 @@
             <div class="kolom-footer">
                 <h4>Culinary</h4>
                 <ul>
-                    <li><a href="Kuliner.html">Sega Jamblang</a></li>
-                    <li><a href="Kuliner.html">Empal Gentong</a></li>
-                    <li><a href="Kuliner.html">Tjampolay Syrup</a></li>
-                    <li><a href="Kuliner.html">Docang Cirebon</a></li>
-                    <li><a href="Kuliner.html">Tahu Gejrot</a></li>
+                    <li><a href="kuliner.html">Sega Jamblang</a></li>
+                    <li><a href="kuliner.html">Empal Gentong</a></li>
+                    <li><a href="kuliner.html">Tjampolay Syrup</a></li>
+                    <li><a href="kuliner.html">Docang Cirebon</a></li>
+                    <li><a href="kuliner.html">Tahu Gejrot</a></li>
                 </ul>
             </div>
             
@@ -677,6 +665,70 @@
             <p>&copy; 2026 Cirebon Cultural Web. Crafted by Nico & Vincent.</p>
         </div>
     </footer>
+
+    <script>
+        const tombolSemua = document.getElementById('tombol-semua');
+        const tombolMakanan = document.getElementById('tombol-makanan');
+        const tombolCamilan = document.getElementById('tombol-camilan');
+        const tombolMinuman = document.getElementById('tombol-minuman');
+
+        const card = document.querySelectorAll('.card');
+
+        function resetStatus() {
+            tombolSemua.classList.remove('aktif');
+            tombolMakanan.classList.remove('aktif');
+            tombolCamilan.classList.remove('aktif');
+            tombolMinuman.classList.remove('aktif');
+        }
+
+        tombolSemua.addEventListener('click', function() {
+            resetStatus();
+            tombolSemua.classList.add('aktif');
+
+            for (let i = 0; i < card.length; i++) {
+                card[i].classList.remove('hideCard');
+            }
+        });
+
+        tombolMakanan.addEventListener('click', function() {
+            resetStatus();
+            tombolMakanan.classList.add('aktif');
+
+            for (let i = 0; i < card.length; i++) {
+                if (card[i].classList.contains('makanan-utama')) {
+                    card[i].classList.remove('hideCard');
+                } else {
+                    card[i].classList.add('hideCard');
+                }
+            }
+        });
+
+        tombolCamilan.addEventListener('click', function() {
+            resetStatus();
+            tombolCamilan.classList.add('aktif');
+
+            for (let i = 0; i < card.length; i++) {
+                if (card[i].classList.contains('camilan-tradisional')) {
+                    card[i].classList.remove('hideCard');
+                } else {
+                    card[i].classList.add('hideCard');
+                }
+            }
+        });
+
+        tombolMinuman.addEventListener('click', function() {
+            resetStatus();
+            tombolMinuman.classList.add('aktif');
+
+            for (let i = 0; i < card.length; i++) {
+                if (card[i].classList.contains('minuman-legendaris')) {
+                    card[i].classList.remove('hideCard');
+                } else {
+                    card[i].classList.add('hideCard');
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
