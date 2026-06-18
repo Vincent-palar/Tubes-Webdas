@@ -154,11 +154,13 @@
             margin-bottom: 20px;
         }
 
-        .pembatas-emas {
-            width: 100px;
+        .garis-sub {
+            position: relative;
+            width: 350px; 
             height: 2px;
-            background-color: #c5a059;
-            margin: 20px auto;
+            background: linear-gradient(to right, #c5a059 0%, rgba(197, 160, 89, 0.6) 40%, rgba(197, 160, 89, 0) 100%);
+            margin-bottom: 25px;
+            border-radius: 2px;
         }
 
         .deskripsi-hero {
@@ -227,6 +229,7 @@
             flex-direction: column;
             transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            scroll-margin-top: 120px;
         }
 
         .hideCard {
@@ -409,9 +412,9 @@
             color: rgba(255, 255, 255, 0.3);
         }
 
-        @media (max-width: 991px) {
+        @media (max-width: 767px) {
             .tombol-toggle {
-                display: block;
+                display: block !important;
             }
 
             .wrapper-menu {
@@ -427,7 +430,6 @@
                 padding: 15px 0;
                 border-radius: 6px;
             }
-
             .toggle-nav-input:checked ~ .wrapper-menu {
                 display: block;
             }
@@ -443,7 +445,7 @@
 
             .link-menu {
                 font-size: 0.9rem;
-                padding: 10px 20px; 
+                padding: 10px 20px !important; 
                 width: 100%;
                 text-align: left; 
             }
@@ -474,12 +476,12 @@
     <nav class="navbar-utama">
         <div class="wadah-nav">
             <a class="link-logo" href="index.html">
-                <span class="ikon-logo"><i class="fa-solid fa-gopuram"></i></span>
+                <i class="fa-solid fa-gopuram ikon-logo"></i>
                 <span class="teks-logo">CIREBON</span>
             </a>
             
             <input type="checkbox" id="btnToggleNav" class="toggle-nav-input">
-            <label class="tombol-toggle" for="btnToggleNav" aria-label="Open Menu">
+            <label class="tombol-toggle" for="btnToggleNav">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -502,24 +504,24 @@
     <header class="hero-header">
         <p class="sub-judul-hero">The Legendary Flavors</p>
         <h1 class="judul-hero">Kuliner & <span class="teks-emas">Cita Rasa</span></h1>
-        <div class="pembatas-emas"></div>
+        <div class="garis-sub" style="margin: 20px auto;"></div>
         <p class="deskripsi-hero">
             Menikmati kekayaan bumbu rempah pesisir, seni pengolahan tradisional berumur ratusan tahun, serta kelezatan ikonik Kota Cirebon.
         </p>
     </header>
 
     <main class="wadah-konten">
-
+        
         <div class="bar-navigasi-filter">
-            <button class="tombol-tab-filter aktif" id="tombol-semua">Semua Hidangan</button>
-            <button class="tombol-tab-filter" id="tombol-makanan">Makanan Utama</button>
-            <button class="tombol-tab-filter" id="tombol-camilan">Camilan Tradisional</button>
-            <button class="tombol-tab-filter" id="tombol-minuman">Minuman Legendaris</button>
+            <button class="tombol-tab-filter aktif" id="tombol-semua">Semua</button>
+            <button class="tombol-tab-filter" id="tombol-makanan">Makanan</button>
+            <button class="tombol-tab-filter" id="tombol-camilan">Camilan</button>
+            <button class="tombol-tab-filter" id="tombol-minuman">Minuman</button>
         </div>
 
         <div class="grid-kuliner">
 
-            <div class="card makanan-utama">
+            <div class="card makanan-utama" id="jamblang">
                 <div class="bingkai-foto-card">
                     <img src="jamblang.jpg" alt="Sega Jamblang">
                 </div>
@@ -530,14 +532,14 @@
                         Nasi Jamblang atau Sega Jamblang adalah ikon kuliner rakyat Cirebon yang disajikan di atas daun jati alami. Karakteristik pori-pori daun jati menjaga kehangatan nasi tanpa membuatnya lembek, serta memberikan aroma kayu hutan yang khas.
                     </p>
                     <ul class="daftar-spesifikasi">
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Pembungkus:</span> Daun Jati Alami</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Lauk Unggulan:</span> Balakutak Sotong Hitam & Semur</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Tekstur Rasa:</span> Gurih Rempah Beraroma Khas</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Pembungkus:</span> Daun Jati Alami</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Lauk Unggulan:</span> Balakutak Sotong Hitam & Semur</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Tekstur Rasa:</span> Gurih Rempah Beraroma Khas</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="card makanan-utama">
+            <div class="card makanan-utama" id="empal">
                 <div class="bingkai-foto-card">
                     <img src="empal.jpg" alt="Empal Gentong">
                 </div>
@@ -548,14 +550,14 @@
                         Sup daging sapi berkuah santan kuning kental dengan rempah melimpah. Dimasak secara perlahan menggunakan kuali tanah liat kuno dan dibakar dengan kayu pohon mangga yang menghasilkan aroma asap manis alami yang khas.
                     </p>
                     <ul class="daftar-spesifikasi"> 
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Alat Masak:</span> Gentong Tanah Liat</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Bahan Bakar:</span> Kayu Bakar Pohon Mangga</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Penyajian:</span> Taburan Kucai & Bubuk Cabai</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Alat Masak:</span> Gentong Tanah Liat</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Bahan Bakar:</span> Kayu Bakar Pohon Mangga</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Penyajian:</span> Taburan Kucai & Bubuk Cabai</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="card minuman-legendaris">
+            <div class="card minuman-legendaris" id="tjampolay">
                 <div class="bingkai-foto-card">
                     <img src="tjampolay.jpg" alt="Tjampolay Syrup">
                 </div>
@@ -566,14 +568,14 @@
                         Sirup legendaris warisan budaya kuliner Cirebon yang diproduksi sejak tahun 1936 oleh Tan Tjin Kiat. Dibuat menggunakan resep gula murni tradisional dengan varian rasa ikonik Pisang Susu yang harum dan manis khas.
                     </p>
                     <ul class="daftar-spesifikasi">
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Tahun Berdiri:</span> Sejak 1936 Masehi</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Pemanis:</span> 100% Gula Tebu Murni</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Rasa Terkenal:</span> Pisang Susu (Rozen Rose)</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Tahun Berdiri:</span> Sejak 1936 Masehi</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Pemanis:</span> 100% Gula Tebu Murni</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Rasa Terkenal:</span> Pisang Susu (Rozen Rose)</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="card makanan-utama">
+            <div class="card makanan-utama" id="docang">
                 <div class="bingkai-foto-card">
                     <img src="docang.jpg" alt="Docang Cirebon">
                 </div>
@@ -584,14 +586,14 @@
                         Kuliner sarapan legendaris berupa perpaduan lontong, tauge, daun singkong, dan parutan kelapa yang disiram kuah panas dari olahan tempe busuk (oncom merah). Hidangan unik ini memiliki rasa asam-gurih menyegarkan.
                     </p>
                     <ul class="daftar-spesifikasi">
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Bahan Kuah:</span> Oncom Merah (Dage)</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Pelengkap:</span> Kerupuk Melarat & Daun Singkong</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Cita Rasa:</span> Gurih Unik Asam Menyegarkan</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Bahan Kuah:</span> Oncom Merah (Dage)</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Pelengkap:</span> Kerupuk Melarat & Daun Singkong</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Cita Rasa:</span> Gurih Unik Asam Menyegarkan</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="card camilan-tradisional">
+            <div class="card camilan-tradisional" id="gejrot">
                 <div class="bingkai-foto-card">
                     <img src="gejrot.jpg" alt="Tahu Gejrot">
                 </div>
@@ -602,9 +604,9 @@
                         Kudapan sore berbahan dasar tahu pong kopong khas Cirebon. Dipotong kecil lalu disiram kuah asam manis gula merah yang diulek kasar langsung bersama bawang merah dan cabai rawit segar di atas layah tanah liat mini.
                     </p>
                     <ul class="daftar-spesifikasi">
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Tipe Tahu:</span> Tahu Pong Goreng Kopong</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Ulekan:</span> Bawang Merah & Cabai Rawit Mentah</li>
-                        <li><span class="ikon-spek">✦</span><span class="label-spek">Rasa Kuah:</span> Manis Pedas Asam Jawa Menyengat</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Tipe Tahu:</span> Tahu Pong Goreng Kopong</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Ulekan:</span> Bawang Merah & Cabai Rawit Mentah</li>
+                        <li><span class="ikon-spek"></span><span class="label-spek">Rasa Kuah:</span> Manis Pedas Asam Jawa Menyengat</li>
                     </ul>
                 </div>
             </div>
@@ -618,33 +620,33 @@
             <div class="kolom-footer">
                 <h4>History & Palace</h4>
                 <ul>
-                    <li><a href="Sejarah.html">Caruban Nagari</a></li>
-                    <li><a href="Sejarah.html">Sunan Gunung Jati</a></li>
-                    <li><a href="Arsitektur.html">Kasepuhan Palace</a></li>
-                    <li><a href="Arsitektur.html">Kanoman Palace</a></li>
-                    <li><a href="Arsitektur.html">Kacirebonan Palace</a></li>
+                    <li><a href="Sejarah.html#caruban">Caruban Nagari</a></li>
+                    <li><a href="Sejarah.html#sunan">Sunan Gunung Jati</a></li>
+                    <li><a href="Arsitektur.html#kasepuhan">Kasepuhan Palace</a></li>
+                    <li><a href="Arsitektur.html#kanoman">Kanoman Palace</a></li>
+                    <li><a href="Arsitektur.html#kacirebonan">Kacirebonan Palace</a></li>
                 </ul>
             </div>
             
             <div class="kolom-footer">
                 <h4>Arts & Music</h4>
                 <ul>
-                    <li><a href="seni.html">Mask Dance</a></li>
-                    <li><a href="seni.html">Philosophical Move</a></li>
-                    <li><a href="musik.html">Gamelan Renteng</a></li>
-                    <li><a href="musik.html">Tarling Coastal</a></li>
-                    <li><a href="musik.html">Seni Gending</a></li>
+                    <li><a href="seni.html#mask-dance">Mask Dance</a></li>
+                    <li><a href="seni.html#philosophical-move">Philosophical Move</a></li>
+                    <li><a href="musik.html#gamelan">Gamelan Renteng</a></li>
+                    <li><a href="musik.html#tarling">Tarling Coastal</a></li>
+                    <li><a href="musik.html#gending">Seni Gending</a></li>
                 </ul>
             </div>
             
             <div class="kolom-footer">
                 <h4>Culinary</h4>
                 <ul>
-                    <li><a href="Kuliner.html">Sega Jamblang</a></li>
-                    <li><a href="Kuliner.html">Empal Gentong</a></li>
-                    <li><a href="Kuliner.html">Tjampolay Syrup</a></li>
-                    <li><a href="Kuliner.html">Docang Cirebon</a></li>
-                    <li><a href="Kuliner.html">Tahu Gejrot</a></li>
+                    <li><a href="Kuliner.html#jamblang">Sega Jamblang</a></li>
+                    <li><a href="Kuliner.html#empal">Empal Gentong</a></li>
+                    <li><a href="Kuliner.html#tjampolay">Tjampolay Syrup</a></li>
+                    <li><a href="Kuliner.html#docang">Docang Cirebon</a></li>
+                    <li><a href="Kuliner.html#gejrot">Tahu Gejrot</a></li>
                 </ul>
             </div>
             
@@ -654,9 +656,9 @@
                     Web ini dibuat untuk melestarikan serta mengenalkan keindahan kultur, sejarah, dan pesona magis dari Kota Cirebon ke kancah dunia.
                 </p>
                 <div class="sosmed-footer">
-                    <a href="https://github.com" aria-label="Github"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Vincent-palar" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/eminslocinnahtanle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/nicolas-elnathan-382061383/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
