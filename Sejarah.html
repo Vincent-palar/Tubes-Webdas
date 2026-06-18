@@ -3,21 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History - Pesona Budaya Cirebon</title>
+    <title>Sejarah & Asal-Usul - Pesona Budaya Cirebon</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
     
     <style>
         html {
             scroll-behavior: smooth;
-        }
-
-        :root {
-            --bg-gelap: #1a1105; 
-            --bg-kartu: #2c1e0f;
-            --emas-utama: #c5a059;
-            --emas-terang: #e5c17d;
-            --warna-teks: #e2d7ca;
         }
 
         * {
@@ -32,7 +25,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
-            color: var(--warna-teks);
+            color: #e2d7ca;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             line-height: 1.8;
@@ -42,6 +35,30 @@
             font-family: 'Cinzel', serif;
             color: #ffffff;
             letter-spacing: 2px;
+        }
+
+        .teks-emas {
+            color: #c5a059;
+        }
+
+        .sub-judul-kecil {
+            font-size: 0.8rem;
+        }
+
+        .deskripsi-dropdown {
+            font-size: 0.9rem;
+            color: rgba(226, 215, 202, 0.7);
+        }
+
+        .jarak-atas {
+            margin-top: 10px;
+        }
+
+        .pembatas-emas {
+            width: 100px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 20px auto;
         }
 
         .navbar-utama {
@@ -63,6 +80,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between; 
+            position: relative;
         }
 
         .link-logo {
@@ -72,7 +90,7 @@
         }
 
         .ikon-logo {
-            color: var(--emas-utama);
+            color: #c5a059;
             font-size: 1.5rem;
             margin-right: 10px;
         }
@@ -82,6 +100,10 @@
             font-weight: 700;
             letter-spacing: 2px;
             color: #ffffff;
+        }
+
+        .toggle-nav-input {
+            display: none;
         }
 
         .list-navigasi {
@@ -96,135 +118,251 @@
         }
 
         .list-navigasi .link-menu {
-            color: var(--warna-teks);
+            color: #e2d7ca;
             text-decoration: none; 
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             transition: all 0.3s ease;
             letter-spacing: 1px;
+            display: inline-block;
         }
 
         .list-navigasi .link-menu:hover, 
         .list-navigasi .link-menu.aktif {
-            color: var(--emas-utama);
+            color: #c5a059;
             text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
         }
 
-        .page-wrap {
-            max-width: 95%;
-            margin: 140px auto 80px auto; 
-            padding: 0 120px; 
+        .tombol-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #c5a059;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
         }
 
-        .title-block {
+        .tombol-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #c5a059;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .hero-header {
             text-align: center;
-            margin-bottom: 60px;
+            padding: 150px 20px 60px 20px;
+            background: transparent;
         }
 
-        .top-tag {
-            font-size: 1.2rem;
-            color: var(--emas-utama);
+        .sub-judul-hero {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             margin-bottom: 10px;
         }
 
-        .main-head {
-            font-size: 3rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        .judul-hero {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .garis-pembatas {
-            width: 100px;
-            height: 2px;
-            background-color: var(--emas-utama);
-            margin: 20px auto;
+        .deskripsi-hero {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2d7ca;
+            font-size: 1rem;
+            font-weight: 300;
         }
 
-        .culture-row {
+        .wadah-konten {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .baris-sejarah {
             display: flex;
             align-items: center;
             gap: 60px;
             margin-bottom: 80px;
         }
 
-        .culture-row:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .culture-row.reverse {
+        .baris-sejarah.arah-terbalik {
             flex-direction: row-reverse;
         }
 
-        .photo-box {
-            flex: 1.2;
-            height: 380px;
-            border: 1px solid rgba(197, 160, 89, 0.1);
+        .area-foto {
+            flex: 1;
+        }
+
+        .bingkai-foto {
+            border: 1px solid rgba(197, 160, 89, 0.3);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            background-color: rgba(44, 30, 15, 0.85);
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 30px;
-            backdrop-filter: blur(5px);
+            aspect-ratio: 4/3;
+            background-color: #1a1105;
         }
 
-        .photo-box:hover {
-            transform: translateY(-10px);
-            border-color: var(--emas-utama);
-            box-shadow: 0px 10px 25px rgba(197, 160, 89, 0.2);
-            background-color: rgba(44, 30, 15, 0.95);
-        }
-
-        .kotak-ikon {
-            font-size: 2.5rem;
-            color: var(--emas-utama);
-            margin-bottom: 1.2rem;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .photo-box h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .list-info-kartu {
-            list-style: none;
-            padding: 0;
+        .bingkai-foto img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
         }
 
-        .list-info-kartu li {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 8px;
-            line-height: 1.6;
+        .bingkai-foto:hover img {
+            transform: scale(1.08);
         }
 
-        .story-text {
-            flex: 1.8;
+        .area-teks {
+            flex: 1.2;
         }
 
-        .story-text p {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.7);
+        .judul-sesi {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .nomor-sesi {
+            color: #c5a059;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .garis-sub {
+            width: 60px;
+            height: 2px;
+            background-color: #c5a059;
+            margin-bottom: 25px;
+        }
+
+        .paragraf-sejarah {
             text-align: justify;
-            text-indent: 50px;
-            margin-bottom: 0;
+            text-indent: 40px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: rgba(226, 215, 202, 0.9);
         }
 
-        .key-text {
-            color: var(--emas-utama);
+        .teks-highlight {
+            color: #e5c17d;
+        }
+
+        .bagian-dropdown {
+            margin: 80px 0 40px 0;
+        }
+
+        .judul-dropdown-seksi {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .wadah-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion-check {
+            display: none;
+        }
+
+        .accordion {
+            background-color: rgba(44, 30, 15, 0.85);
+            color: #ffffff;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            outline: none;
+            transition: 0.4s;
+            font-family: 'Cinzel', serif;
             font-weight: 600;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .accordion::after {
+            content: '▼';
+            color: #c5a059;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion:hover {
+            background-color: rgba(26, 17, 5, 0.95);
+            color: #e5c17d;
+            border-color: rgba(197, 160, 89, 0.5);
+        }
+
+        .accordion-check:checked + .accordion {
+            background-color: rgba(26, 17, 5, 0.95);
+            color: #e5c17d;
+            border-color: rgba(197, 160, 89, 0.5);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .accordion-check:checked + .accordion::after {
+            transform: rotate(180deg);
+        }
+
+        .panel {
+            background-color: rgba(26, 17, 5, 0.3);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            border-left: 1px solid rgba(197, 160, 89, 0.1);
+            border-right: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #e2d7ca;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .accordion-check:checked ~ .panel {
+            max-height: 500px;
+        }
+
+        .panel-content {
+            padding: 25px;
+        }
+
+        .daftar-silsilah {
+            list-style: none;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .daftar-silsilah li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .daftar-silsilah li::before {
+            content: '✦';
+            color: #c5a059;
+            position: absolute;
+            left: -15px;
         }
 
         footer {
@@ -251,7 +389,7 @@
             letter-spacing: 1.5px;
             margin-bottom: 22px;
             text-transform: uppercase;
-            border-left: 3px solid var(--emas-utama); 
+            border-left: 3px solid #c5a059; 
             padding-left: 12px; 
             line-height: 1.2; 
         }
@@ -275,7 +413,7 @@
         }
 
         .kolom-footer ul li a:hover {
-            color: var(--emas-utama);
+            color: #c5a059;
             transform: translateX(5px);
         }
 
@@ -293,7 +431,7 @@
         }
 
         .sosmed-footer a {
-            color: var(--emas-utama);
+            color: #c5a059;
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
@@ -314,27 +452,68 @@
             color: rgba(255, 255, 255, 0.3);
         }
 
-        @media (max-width: 992px) {
-            .page-wrap {
-                max-width: 100%;
-                padding: 0 20px;
-                margin-top: 110px;
+        @media (max-width: 767px) {
+            .tombol-toggle {
+                display: block !important;
             }
-            .culture-row, .culture-row.reverse {
+
+            .wrapper-menu {
+                display: none; 
+                position: absolute;
+                top: 55px; 
+                right: 5%; 
+                left: auto; 
+                width: 220px; 
+                background-color: rgba(35, 23, 8, 0.98); 
+                border: 1px solid rgba(197, 160, 89, 0.4);
+                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+                padding: 15px 0;
+                border-radius: 6px;
+            }
+
+            .toggle-nav-input:checked ~ .wrapper-menu {
+                display: block;
+            }
+
+            .list-navigasi {
                 flex-direction: column;
-                gap: 35px;
-                margin-bottom: 60px;
+                align-items: stretch;
             }
-            .photo-box, .story-text {
+
+            .list-navigasi li {
+                margin: 0; 
+            }
+
+            .list-navigasi .link-menu {
+                font-size: 0.9rem;
+                padding: 10px 20px !important; 
                 width: 100%;
-                flex: none;
+                text-align: left; 
             }
-            .main-head {
+            
+            .list-navigasi .link-menu:hover {
+                background-color: rgba(197, 160, 89, 0.1);
+            }
+
+            .judul-hero {
                 font-size: 2.2rem;
             }
-            .container-footer {
-                grid-template-columns: 1fr;
+
+            .baris-sejarah, 
+            .baris-sejarah.arah-terbalik {
+                flex-direction: column;
                 gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .area-foto, .area-teks {
+                width: 100%;
+            }
+
+            .container-footer {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: left;
             }
         }
     </style>
@@ -348,70 +527,173 @@
                 <span class="teks-logo">CIREBON</span>
             </a>
             
-            <ul class="list-navigasi">
-                <li><a class="link-menu" href="home.html">Home</a></li>
-                <li><a class="link-menu aktif" href="sejarah.html">History</a></li>
-                <li><a class="link-menu" href="arsitektur.html">Palace</a></li>
-                <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
-                <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
-                <li><a class="link-menu" href="kuliner.html">Culinary</a></li>
-                <li><a class="link-menu" href="about.html">About Me</a></li>
-            </ul>
+            <input type="checkbox" id="btnToggleNav" class="toggle-nav-input">
+            <label class="tombol-toggle" for="btnToggleNav" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
+            <div class="wrapper-menu" id="boxNavMenu">
+                <ul class="list-navigasi">
+                    <li><a class="link-menu" href="home.html">Home</a></li>
+                    <li><a class="link-menu aktif" href="sejarah.html">History</a></li>
+                    <li><a class="link-menu" href="arsitektur.html">Palace</a></li>
+                    <li><a class="link-menu" href="seni.html">Performing Arts</a></li>
+                    <li><a class="link-menu" href="musik.html">Traditional Music</a></li>
+                    <li><a class="link-menu" href="kuliner.html">Culinary</a></li>
+                    <li><a class="link-menu" href="about.html">About Me</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="page-wrap">
-        <div class="title-block">
-            <p class="top-tag">The Origin</p>
-            <h1 class="main-head">Sejarah Kota Cirebon</h1>
-            <div class="garis-pembatas"></div>
-        </div>
+    <header class="hero-header">
+        <p class="sub-judul-hero">The Chronicles of The Jewel of Java</p>
+        <h1 class="judul-hero">Sejarah & <span class="teks-emas">Asal-Usul</span></h1>
+        <div class="pembatas-emas"></div>
+        <p class="deskripsi-hero">
+            Menelusuri jejak spiritualitas masa lampau, lahirnya peradaban pesisir Caruban Nagari, hingga kharisma dakwah Sunan Gunung Jati.
+        </p>
+    </header>
 
-        <div class="culture-row">
-            <div class="photo-box">
-                <div class="kotak-ikon"><i class="fa-solid fa-scroll"></i></div>
-                <h3>Caruban Nagari</h3>
-                <ul class="list-info-kartu">
-                    <li>✦ Asal nama: Campuran berbagai suku</li>
-                    <li>✦ Elemen: Sunda, Jawa, Tionghoa, Arab</li>
-                    <li>✦ Sifat: Terbuka & Multikultural</li>
-                </ul>
+    <main class="wadah-konten">
+        
+        <section class="baris-sejarah" id="caruban-nagari">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="caruban.png" alt="Caruban Nagari">
+                </div>
             </div>
-            <div class="story-text">
-                <p>Nama <span class="key-text">Cirebon</span> berasal dari kata <em>"Caruban"</em> yang dalam bahasa Sunda berarti campuran. Hal ini merujuk pada kondisi masyarakat Cirebon yang sejak awal berdirinya merupakan perpaduan berbagai suku bangsa, agama, dan budaya, mulai dari Sunda, Jawa, Tionghoa, Arab, hingga Eropa yang datang untuk berdagang secara damai di pesisir utara.</p>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">I.</span>
+                    <h2>Lahirnya Caruban Nagari</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-sejarah">
+                    Sejarah panjang Cirebon berawal dari dibukanya sebuah permukiman kecil di pesisir utara Jawa bernama <span class="teks-highlight">Dukuh Alang-Alang</span> oleh Pangeran Walagsungsang (dikenal juga sebagai Pangeran Cakrabuana) pada tahun 1445 Masehi. Wilayah ini lambat laun bertransformasi menjadi bandar pelabuhan yang ramai dikunjungi para pedagang mancanegara.
+                </p>
+                <p class="paragraf-sejarah">
+                    Masyarakat setempat kemudian menamainya <span class="teks-highlight">"Caruban"</span>, yang dalam bahasa Sunda kuno berarti "campuran". Nama ini sangat akurat merepresentasikan kondisi sosial Cirebon yang dihuni oleh ragam etnis: Sunda, Jawa, Melayu, Tionghoa, Arab, hingga Gujarat. Di bawah naungan Pangeran Cakrabuana, keberagaman ini tidak memicu konflik, melainkan melahirkan sebuah harmoni kebudayaan baru yang luhur dan bersahabat.
+                </p>
             </div>
-        </div>
+        </section>
 
-        <div class="culture-row reverse">
-            <div class="photo-box">
-                <div class="kotak-ikon"><i class="fa-solid fa-shrimp"></i></div>
-                <h3>Komoditas Utama</h3>
-                <ul class="list-info-kartu">
-                    <li>✦ Arti Kata: Cai (Air) & Rebon (Udang)</li>
-                    <li>✦ Produk: Terasi kualitas tinggi</li>
-                    <li>✦ Upeti: Kerajaan Galuh Pajajaran</li>
-                </ul>
+        <section class="baris-sejarah arah-terbalik" id="cai-rebon">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="cairebon.png" alt="Cai Rebon">
+                </div>
             </div>
-            <div class="story-text">
-                <p>Selain Caruban, nama Cirebon juga diyakini berasal dari kata <em>"Cai"</em> (air) dan <em>"Rebon"</em> (udang kecil). Dikisahkan bahwa pada masa lalu, mata pencaharian utama masyarakat setempat adalah sebagai nelayan yang menangkap udang rebon untuk dibuat terasi. Produk terasi olahan Cirebon yang sangat berkualitas ini bahkan menjadi komoditas upeti utama bagi Kerajaan Galuh Pajajaran.</p>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">II.</span>
+                    <h2>Metamorfosis "Cai Rebon"</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-sejarah">
+                    Secara etimologi, selain bermakna campuran (Caruban), nama Cirebon juga diyakini berasal dari kata <span class="teks-highlight">"Cai"</span> (air) dan <span class="teks-highlight">"Rebon"</span> (udang kecil). Dikisahkan bahwa pada masa lalu, mata pencaharian utama masyarakat setempat adalah sebagai nelayan yang menangkap udang rebon untuk dibuat terasi.
+                </p>
+                <p class="paragraf-sejarah">
+                    Air sisa hasil pengolahan udang rebon (terasi) inilah yang dinamakan air rebon, yang lama-kelamaan mengalami peluluhan fonetis dari kata Cai-Rebon menjadi <span class="teks-highlight">Cirebon</span>. Produksi terasi khas Cirebon ini tumbuh sangat pesat dan memiliki cita rasa premium yang sangat khas, sehingga di kemudian hari dijadikan salah satu upeti wajib yang dipersembahkan kepada Kerajaan Pajajaran sebagai penguasa pedalaman Jawa Barat saat itu.
+                </p>
             </div>
-        </div>
+        </section>
 
-        <div class="culture-row">
-            <div class="photo-box">
-                <div class="kotak-ikon"><i class="fa-solid fa-crown"></i></div>
-                <h3>Pusat Peradaban</h3>
-                <ul class="list-info-kartu">
-                    <li>✦ Tokoh: Pangeran Walagsungsang</li>
-                    <li>✦ Sultan: Sunan Gunung Jati</li>
-                    <li>✦ Abad: Ke-15 Masehi</li>
-                </ul>
+        <section class="baris-sejarah" id="sunan-gunung-jati">
+            <div class="area-foto">
+                <div class="bingkai-foto">
+                    <img src="sunangunungjati.png" alt="Sunan Gunung Jati">
+                </div>
             </div>
-            <div class="story-text">
-                <p>Perkembangan Cirebon menjadi pusat peradaban besar tidak lepas dari peran <span class="key-text">Pangeran Walagsungsang</span> (Cakrabuana) dan keponakannya, <span class="key-text">Sunan Gunung Jati</span> (Syarif Hidayatullah). Di bawah kepemimpinan Sunan Gunung Jati pada abad ke-15, Cirebon secara resmi melepaskan diri dari kekuasaan Pajajaran dan berkembang menjadi Kesultanan Islam yang merdeka sekaligus pusat penyebaran agama Islam yang disegani di tanah Jawa.</p>
+            <div class="area-teks">
+                <div class="judul-sesi">
+                    <span class="nomor-sesi">III.</span>
+                    <h2>Karisma Sunan Gunung Jati</h2>
+                </div>
+                <div class="garis-sub"></div>
+                <p class="paragraf-sejarah">
+                    Keemasan peradaban Kesultanan Cirebon dipicu oleh kepemimpinan ulama agung <span class="teks-highlight">Syarif Hidayatullah</span> atau Sunan Gunung Jati yang bertahta sejak tahun 1479 M. Beliau merupakan putra dari perkawinan Syarif Abdullah (penguasa Mesir) dan Nyai Rara Santang (putri Prabu Siliwangi dari Pajajaran).
+                </p>
+                <p class="paragraf-sejarah">
+                    Melalui kecerdasan taktis diplomatik serta kelembutan spiritual beliau, Cirebon secara resmi mendeklarasikan kemerdekaan kedaulatannya pada tanggal <span class="teks-highlight">12 Shafar 887 Hijriah (2 April 1482 M)</span>, memutus rantai ketergantungan upeti dari Pajajaran. Tanggal bersejarah inilah yang hingga saat ini dirayakan dengan penuh syukur sebagai hari jadi Kabupaten Cirebon.
+                </p>
+                <p class="paragraf-sejarah">
+                    Sunan Gunung Jati tidak hanya memimpin kesultanan secara adil, melainkan menyebarkan ajaran Islam secara akomodatif tanpa menghapus kearifan budaya lokal, menjadikannya salah satu dari sembilan wali suci (Wali Songo) paling dihormati di tanah Nusantara.
+                </p>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <section class="bagian-dropdown">
+            <div class="judul-dropdown-seksi">
+                <p class="sub-judul-hero sub-judul-kecil">Informasi Khusus</p>
+                <h2>Eksplorasi Detail Peninggalan & Silsilah</h2>
+                <div class="pembatas-emas"></div>
+                <p class="deskripsi-dropdown">Klik pada panel di bawah untuk membuka informasi sejarah lebih mendalam.</p>
+            </div>
+
+            <div class="wadah-accordion">
+                
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-1" class="accordion-check">
+                    <label for="faq-1" class="accordion">✦ Silsilah Mulia Sunan Gunung Jati</label>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Sunan Gunung Jati (Syarif Hidayatullah) memiliki silsilah luhur yang menyatukan trah bangsawan Timur Tengah dengan dinasti agung tanah Sunda Pajajaran:</p>
+                            <ul class="daftar-silsilah">
+                                <li><span class="teks-highlight">Garis Ayah:</span> Syarif Abdullah Umdatuddin Azmatkhan bin Syarif Ali Nurul Alam (Keturunan langsung Rasulullah SAW dari jalur Sayyidina Husain).</li>
+                                <li><span class="teks-highlight">Garis Ibu:</span> Nyai Rara Santang (setelah masuk Islam bernama Syarifah Mudaim), putri kandung Sri Baduga Maharaja Prabu Siliwangi (Raja Legendaris Kerajaan Pajajaran).</li>
+                            </ul>
+                            <p>Silsilah istimewa inilah yang memberikan beliau pengaruh karismatik spiritual yang luar biasa di kalangan rakyat jelata maupun para penguasa kerajaan seantero Nusantara.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-2" class="accordion-check">
+                    <label for="faq-2" class="accordion">✦ Kereta Pusaka Singa Barong & Paksi Naga Liman</label>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Di dalam kompleks Keraton Kasepuhan and Kanoman tersimpan kereta kencana pusaka yang memiliki nilai seni, teknologi, dan filosofi spiritual yang teramat tinggi:</p>
+                            <ul class="daftar-silsilah">
+                                <li><span class="teks-highlight">Kereta Paksi Naga Liman:</span> Kereta pusaka Keraton Kanoman yang berwujud makhluk gabungan bersayap burung (Paksi), bertubuh ular naga (Naga), dan belalai gajah (Liman). Simbol persatuan damai budaya Islam, Tionghoa, dan Hindu.</li>
+                                <li><span class="teks-highlight">Kereta Singa Barong:</span> Kereta kencana maha karya seni pahat dari tahun 1649 M yang memiliki sistem suspensi roda sangat canggih pada zamannya.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-3" class="accordion-check">
+                    <label for="faq-3" class="accordion">✦ Masjid Agung Sang Cipta Rasa</label>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Didirikan pada tahun 1480 Masehi, masjid ini adalah salah satu masjid tertua di Nusantara yang merupakan hasil kolaborasi agung antara para Wali Songo:</p>
+                            <p class="jarak-atas">
+                                Arsitektur masjid ini dirancang langsung oleh Sunan Kalijaga dengan mendatangkan ratusan tukang kayu terampil dari Majapahit. Salah satu keunikan mistis yang paling terkenal adalah tiang <span class="teks-highlight">"Saka Tatal"</span>, tiang penyangga utama masjid yang dibuat secara ajaib oleh Sunan Kalijaga dari tumpukan potongan-potongan sisa kayu (tatal) yang diikat erat menjadi satu tiang pancang yang kokoh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-4" class="accordion-check">
+                    <label for="faq-4" class="accordion">✦ Jejak Perkawinan Multikultural & Pengaruh Tionghoa</label>
+                    <div class="panel">
+                        <div class="panel-content">
+                            <p>Salah satu bukti indahnya asimilasi budaya di Cirebon adalah pernikahan Sunan Gunung Jati dengan <span class="teks-highlight">Putri Ong Tien Nio</span> (anak dari Kaisar Dinasti Ming, Tiongkok) pada tahun 1481 Masehi.</p>
+                            <p class="jarak-atas">
+                                Pernikahan suci ini melahirkan akulturasi budaya Tionghoa yang sangat kental pada ragam ukiran keraton Cirebon. Ribuan piring porselen kuno asli Tiongkok dari masa itu hingga kini tertempel rapi menghiasi dinding-dinding bagian dalam Keraton Kasepuhan and makam Sunan Gunung Jati sebagai bukti abadi persahabatan kedua bangsa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 
     <footer>
         <div class="container-footer">
